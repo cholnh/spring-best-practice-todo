@@ -1,0 +1,82 @@
+# To-do API APPLICATION PROPERTY
+
+server:
+  # 서버 포트
+  port: 9530
+
+  servlet:
+    # 서버 url 뒤에 추가되는 path
+    context-path: /v1
+
+    session:
+      # url jsession 제거 (서버측에선 클라이언트가 쿠키를 사용하는지 알 수 없으므로 url 뒤 jsession 을 붙히게 됨)
+      tracking-modes: cookie
+
+  # Response Body 압축 (gzip)
+  # 주의: 기본 타입 목록(server.compression.mime-types)에 application/json 없음.
+  compression:
+    enabled: true
+    # 압축 수행할 최소 Content-Length 값
+    min-response-size: 2048
+
+---
+spring:
+  jpa:
+    # sql 로깅
+    # show-sql: true
+    generate-ddl: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+      # sql 로깅
+      # show_sql: true
+      # use_sql_comments: true
+      # format_sql: true
+      # generate_statistics: true
+
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/db_nteve_todo_v1?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&useSSL=false&validationQuery=select 1&serverTimezone=Asia/Seoul
+      username: nakzzi
+      password: skrwl486
+      connection-init-sql: "SET NAMES 'utf8mb4'"
+
+  data:
+    rest:
+      base-path: /jpa
+      detection-strategy: default
+
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+---
+logging:
+  file:
+    path: log/slf4j.log
+  level:
+    org:
+      hibernate:
+        # SQL: debug       # sql 로깅
+        type:
+          descriptor:
+          # sql: trace   # sql 로깅
+---
+management:
+  health:
+    diskspace:
+      enabled: false
+    status:
+      order: DOWN, MAINTENANCE, UNKNOWN, UP
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+        exclude: env, beans
+---
