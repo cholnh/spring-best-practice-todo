@@ -8,10 +8,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user_tbl")
+@Getter
 @DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
-@EqualsAndHashCode(callSuper=false)
 public class User extends Auditable {
 
     @Id
