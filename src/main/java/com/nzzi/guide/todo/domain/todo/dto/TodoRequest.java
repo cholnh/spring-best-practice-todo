@@ -1,30 +1,19 @@
 package com.nzzi.guide.todo.domain.todo.dto;
 
-import com.nzzi.guide.todo.domain.todo.model.Todo;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor(staticName = "of")
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TodoRequest {
 
-    @Valid
+    @NotBlank(message = "제목을 입력해주세요.")
     private String title;
 
-    @Valid
+    @NotBlank(message = "내용을 입력해주세요.")
     private String contents;
-
-    public TodoRequest(@Valid String title, @Valid String contents) {
-        this.title = title;
-        this.contents = contents;
-    }
-
-    public Todo toEntity() {
-        return Todo.builder()
-                .title(title)
-                .contents(contents)
-                .build();
-    }
 }

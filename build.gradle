@@ -1,7 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.4.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+//    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
     id 'java'
 }
 
@@ -27,46 +27,47 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
+
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+    
     implementation 'org.projectlombok:lombok'
-    implementation group: 'org.projectlombok', name: 'lombok-mapstruct-binding', version: '0.2.0'
+    annotationProcessor 'org.projectlombok:lombok'
 
     testAnnotationProcessor 'org.projectlombok:lombok'
     testCompileOnly 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 
-    compile("com.querydsl:querydsl-jpa") // querydsl
-    compile("com.querydsl:querydsl-apt") // querydsl
-    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.5.RELEASE'
+//    compile("com.querydsl:querydsl-jpa") // querydsl
+//    compile("com.querydsl:querydsl-apt") // querydsl
+//    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.5.RELEASE'
 
-    implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.1.1'
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
+//    implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.1.1'
 }
 
 test {
     useJUnitPlatform()
 }
 
-/* QueryDSL */
-def querydslDir = "src/main/generated"
-
-querydsl {
-    library = "com.querydsl:querydsl-apt"
-    jpa = true
-    querydslSourcesDir = querydslDir
-}
-
-sourceSets {
-    main.java.srcDir querydslDir
-}
-
-configurations {
-    querydsl.extendsFrom compileClasspath
-}
-
-compileQuerydsl {
-    options.annotationProcessorPath = configurations.querydsl
-}
-/* end QueryDSL */
+///* QueryDSL */
+//def querydslDir = "src/main/generated"
+//
+//querydsl {
+//    library = "com.querydsl:querydsl-apt"
+//    jpa = true
+//    querydslSourcesDir = querydslDir
+//}
+//
+//sourceSets {
+//    main.java.srcDir querydslDir
+//}
+//
+//configurations {
+//    querydsl.extendsFrom compileClasspath
+//}
+//
+//compileQuerydsl {
+//    options.annotationProcessorPath = configurations.querydsl
+//}
+///* end QueryDSL */
