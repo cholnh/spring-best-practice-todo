@@ -29,8 +29,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
 
-    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
-    
     implementation 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
@@ -39,11 +37,11 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 
-//    compile("com.querydsl:querydsl-jpa") // querydsl
-//    compile("com.querydsl:querydsl-apt") // querydsl
-//    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.5.RELEASE'
+    compile("com.querydsl:querydsl-jpa") // querydsl
+    compile("com.querydsl:querydsl-apt") // querydsl
+    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.5.RELEASE'
 
-//    implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.1.1'
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.1.1'
 }
 
 test {
