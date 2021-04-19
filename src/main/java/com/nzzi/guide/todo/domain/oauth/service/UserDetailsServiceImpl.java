@@ -1,6 +1,6 @@
-package com.nzzi.guide.todo.domain.oauth.application;
+package com.nzzi.guide.todo.domain.oauth.service;
 
-import com.nzzi.guide.todo.domain.user.infrastructure.jpa.UserRepository;
+import com.nzzi.guide.todo.domain.user.dao.jpa.UserRepository;
 import com.nzzi.guide.todo.domain.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;

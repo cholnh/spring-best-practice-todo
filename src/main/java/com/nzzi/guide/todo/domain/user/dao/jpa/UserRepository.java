@@ -1,4 +1,4 @@
-package com.nzzi.guide.todo.domain.user.infrastructure.jpa;
+package com.nzzi.guide.todo.domain.user.dao.jpa;
 
 import com.nzzi.guide.todo.domain.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

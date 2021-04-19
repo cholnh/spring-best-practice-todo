@@ -9,7 +9,7 @@ server:
       tracking-modes: cookie  # url jsession 제거 (서버측에선 클라이언트가 쿠키를 사용하는지 알 수 없으므로 url 뒤 jsession 을 붙히게 됨)
 
   # Response Body 압축 (gzip)
-  # 주의: 기본 타입 목록(server.compression.mime-types)에 application/json 없음.
+  # 주의: 기본 타입 목록(server.compression.mime-types)에 service/json 없음.
   compression:
     enabled: true
     min-response-size: 2048 # 압축 수행할 최소 Content-Length 값

@@ -36,7 +36,8 @@ public class TodoPredicate {
         if (queryString == null)
             return todoPredicate;
 
-        Arrays.asList(queryString.split(DELIMITER_QUERY)).forEach((queryKeyValue) -> {
+        Arrays.asList(queryString.split(DELIMITER_QUERY))
+                .forEach((queryKeyValue) -> {
             String key = queryKeyValue.split(DELIMITER_KEY_VALUE)[0];
             String value = queryKeyValue.split(DELIMITER_KEY_VALUE)[0];
             mapping(todoPredicate, key, value);
@@ -48,13 +49,10 @@ public class TodoPredicate {
     private static void mapping(TodoPredicate predicate, String key, String value) {
         switch (key) {
             case "title":
-                predicate.title = value;
-                break;
+                predicate.title = value; break;
             case "contents":
-                predicate.contents = value;
-                break;
-            default:
-                break;
+                predicate.contents = value; break;
+            default: break;
         }
     }
 }

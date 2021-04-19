@@ -1,4 +1,4 @@
-package com.nzzi.guide.todo.domain.todo.infrastructure.jpa;
+package com.nzzi.guide.todo.domain.todo.dao.jpa;
 
 import com.nzzi.guide.todo.domain.todo.dto.TodoPredicate;
 import com.nzzi.guide.todo.domain.todo.model.Todo;

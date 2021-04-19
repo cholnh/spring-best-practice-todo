@@ -1,9 +1,9 @@
-package com.nzzi.guide.todo.domain.todo.application;
+package com.nzzi.guide.todo.domain.todo.service;
 
 import com.nzzi.guide.todo.domain.todo.dto.TodoPredicate;
 import com.nzzi.guide.todo.domain.todo.dto.TodoResponse;
 import com.nzzi.guide.todo.domain.todo.exception.TodoNotFoundException;
-import com.nzzi.guide.todo.domain.todo.infrastructure.jpa.TodoRepository;
+import com.nzzi.guide.todo.domain.todo.dao.jpa.TodoRepository;
 import com.nzzi.guide.todo.domain.todo.model.Todo;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;

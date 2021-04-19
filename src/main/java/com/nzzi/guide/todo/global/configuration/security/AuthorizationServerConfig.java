@@ -1,6 +1,6 @@
 package com.nzzi.guide.todo.global.configuration.security;
 
-import com.nzzi.guide.todo.domain.oauth.application.UserDetailsServiceImpl;
+import com.nzzi.guide.todo.domain.oauth.service.UserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

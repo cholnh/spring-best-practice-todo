@@ -1,6 +1,6 @@
 package com.nzzi.guide.todo.domain.todo.api;
 
-import com.nzzi.guide.todo.domain.todo.application.TodoFindService;
+import com.nzzi.guide.todo.domain.todo.service.TodoFindService;
 import com.nzzi.guide.todo.domain.todo.dto.TodoPredicate;
 import com.nzzi.guide.todo.domain.todo.dto.TodoResponse;
 import lombok.AllArgsConstructor;
@@ -22,11 +22,14 @@ public class TodoApi {
 
     private TodoFindService todoFindService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findOne(@PathVariable(value = "id", required = true) Long id) {
-        EntityModel<TodoResponse> resource = EntityModel.of(todoFindService.findTodo(id));
-        resource.add(linkTo(methodOn(TodoApi.class).findOne(id)).withSelfRel());
-        return ResponseEntity.ok(resource);
+    @GetMapping("/{todoId}")
+    public ResponseEntity<?> findOne(@PathVariable(value = "todoId", required = true) Long todoId) {
+
+        EntityModel<TodoResponse> resources = EntityModel.of(
+            todoFindService.findTodo(todoId));
+
+        resources.add(linkTo(methodOn(TodoApi.class).findOne(todoId)).withSelfRel());
+        return ResponseEntity.ok(resources);
     }
 
     @GetMapping
@@ -34,12 +37,11 @@ public class TodoApi {
             @RequestParam(value = "query", required = false) String query,
             @PageableDefault(sort = {"idx"}, direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pageable
     ) {
-        CollectionModel<TodoResponse> resources = query == null
-            ? CollectionModel.of(todoFindService.findTodos(pageable))
-            : CollectionModel.of(todoFindService.searchByContents(TodoPredicate.of(query), pageable));
-        resources
-                .add(linkTo(methodOn(TodoApi.class).findGroup(query, pageable)).withSelfRel());
+        CollectionModel<TodoResponse> resources = CollectionModel.of(query == null
+            ? todoFindService.findTodos(pageable)
+            : todoFindService.searchByContents(TodoPredicate.of(query), pageable));
 
+        resources.add(linkTo(methodOn(TodoApi.class).findGroup(query, pageable)).withSelfRel());
         return ResponseEntity.ok(resources);
     }
 }
