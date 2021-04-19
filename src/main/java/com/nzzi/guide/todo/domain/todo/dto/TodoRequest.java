@@ -1,5 +1,7 @@
 package com.nzzi.guide.todo.domain.todo.dto;
 
+import com.nzzi.guide.todo.domain.todo.model.Todo;
+import com.nzzi.guide.todo.global.configuration.mapper.CustomMapper;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,4 +18,9 @@ public class TodoRequest {
 
     @NotBlank(message = "내용을 입력해주세요.")
     private String contents;
+
+    public Todo toEntity() {
+        return CustomMapper.getInstance()
+                .map(this, Todo.class);
+    }
 }
