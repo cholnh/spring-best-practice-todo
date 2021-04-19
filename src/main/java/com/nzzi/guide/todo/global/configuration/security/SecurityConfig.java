@@ -1,4 +1,4 @@
-package com.nzzi.guide.todo.global.config.security;
+package com.nzzi.guide.todo.global.configuration.security;
 
 import com.nzzi.guide.todo.domain.oauth.application.UserDetailsServiceImpl;
 import lombok.AllArgsConstructor;

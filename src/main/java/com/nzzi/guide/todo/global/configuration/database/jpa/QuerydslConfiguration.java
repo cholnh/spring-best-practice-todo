@@ -1,4 +1,4 @@
-package com.nzzi.guide.todo.global.config.jpa;
+package com.nzzi.guide.todo.global.configuration.database.jpa;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.context.annotation.Bean;
