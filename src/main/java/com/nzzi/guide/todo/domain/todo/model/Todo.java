@@ -2,6 +2,7 @@ package com.nzzi.guide.todo.domain.todo.model;
 
 import com.nzzi.guide.todo.domain._base.Auditable;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -22,6 +23,10 @@ import javax.persistence.*;
  * 추후에 Lazy Loading 사용 시 Proxy 에서 생성하지 못하여 Exception 발생
  */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+/*
+ * 상위 부모 객체인 Auditable 의 생성자 빌더를 추가시키기 위함
+ */
+@SuperBuilder
 public class Todo extends Auditable {
 
     @Id

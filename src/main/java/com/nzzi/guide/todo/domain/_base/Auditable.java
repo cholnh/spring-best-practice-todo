@@ -2,17 +2,24 @@ package com.nzzi.guide.todo.domain._base;
 
 import com.nzzi.guide.todo.global.annotation.BooleanToYNConverter;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @EntityListeners(value = AuditingEntityListener.class)
 @MappedSuperclass
 @Getter
+@SuperBuilder
+@NoArgsConstructor
 public abstract class Auditable implements Serializable {
 
     /**
