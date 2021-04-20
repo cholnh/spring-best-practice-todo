@@ -57,7 +57,7 @@ public class TodoApi {
     public ResponseEntity create(
             @Valid @RequestBody TodoRequest request
     ) {
-        Todo created = todoCommandService.create(request);
+        TodoResponse created = todoCommandService.create(request);
         Link link = linkTo(methodOn(TodoApi.class).findOne(created.getIdx()))
                 .withSelfRel();
         return ResponseEntity
@@ -70,7 +70,7 @@ public class TodoApi {
             @PathVariable(value = "todoId") Long todoId,
             @RequestBody TodoRequest request
     ) {
-        Todo updated = todoCommandService.update(todoId, request);
+        TodoResponse updated = todoCommandService.update(todoId, request);
         Link link = linkTo(methodOn(TodoApi.class).findOne(updated.getIdx()))
                 .withSelfRel();
         return ResponseEntity
