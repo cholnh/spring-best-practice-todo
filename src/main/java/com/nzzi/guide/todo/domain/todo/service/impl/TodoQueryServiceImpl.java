@@ -36,6 +36,8 @@ public class TodoQueryServiceImpl implements TodoQueryService {
     }
 
     private Todo findById(Long id) {
+        if (id == null || id <= 0)
+            throw new TodoNotFoundException();
         return todoRepository.findById(id)
                 .orElseThrow(() -> new TodoNotFoundException(id.toString()));
     }
