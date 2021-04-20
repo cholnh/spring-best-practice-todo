@@ -7,7 +7,6 @@ import com.nzzi.guide.todo.domain.todo.exception.TodoNotFoundException;
 import com.nzzi.guide.todo.domain.todo.model.Todo;
 import com.nzzi.guide.todo.domain.todo.service.TodoQueryService;
 import com.nzzi.guide.todo.global.error.exception.ErrorCode;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -24,7 +23,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.given;
 
 @SpringBootTest
 class TodoQueryServiceImplTest {
@@ -38,10 +37,6 @@ class TodoQueryServiceImplTest {
     @InjectMocks
     private TodoQueryServiceImpl todoQueryServiceWithMock;
 
-    @BeforeEach
-    void setUp() {
-    }
-
     @Nested
     class TodoFind {
 
@@ -50,20 +45,16 @@ class TodoQueryServiceImplTest {
         void find_todo_success() {
 
             // given (해당 테스트는 mock 사용할 필요 없지만 예시를 위해 사용)
-            Long expectedId = 1L;
-            Todo mockEntity = Todo.builder()
-                    .isActive(true)
-                    .createdDate(LocalDateTime.now())
-                    .lastModifiedDate(LocalDateTime.now())
-                    .idx(expectedId)
-                    .title("타이틀")
-                    .contents("콘텐츠")
-                    .build();
-            when(mockTodoRepository.findById(expectedId))
-                    .thenReturn(Optional.ofNullable(mockEntity));
+            final Long expectedId = 1L;
+            given(mockTodoRepository.findById(expectedId))
+                    .willReturn(Optional.ofNullable(mockEntity(
+                            expectedId,
+                            "타이틀",
+                            "콘텐츠")));
 
             // when
-            TodoResponse actualTodoResponse = todoQueryServiceWithMock.findTodo(expectedId);
+            TodoResponse actualTodoResponse = todoQueryServiceWithMock
+                    .findTodo(expectedId);
 
             // then
             assertNotNull(actualTodoResponse.getCreatedDate());
@@ -79,10 +70,11 @@ class TodoQueryServiceImplTest {
         void find_todo_fail() {
 
             // given
-            Long idForExceptionExpected = -1L;
+            final Long idForExceptionExpected = -1L;
 
             // when
-            TodoNotFoundException expectedException = assertThrows(TodoNotFoundException.class,
+            TodoNotFoundException expectedException = assertThrows(
+                    TodoNotFoundException.class,
                     () -> todoQueryService.findTodo(idForExceptionExpected));
 
             // then
@@ -98,7 +90,8 @@ class TodoQueryServiceImplTest {
             Pageable pageable = Pageable.unpaged();
 
             // when
-            Page<TodoResponse> actualPage = todoQueryService.findTodos(pageable);
+            Page<TodoResponse> actualPage = todoQueryService
+                    .findTodos(pageable);
 
             // then
             actualPage.forEach(actualTodo -> {
@@ -115,10 +108,10 @@ class TodoQueryServiceImplTest {
         void find_all_todo_with_page_success() {
 
             // given
-            int expectedPage = 0;
-            int expectedSize = 10;
-            Sort.Direction expectedDirection = Sort.Direction.DESC;
-            String expectedProperty = "idx";
+            final int expectedPage = 0;
+            final int expectedSize = 10;
+            final Sort.Direction expectedDirection = Sort.Direction.DESC;
+            final String expectedProperty = "idx";
 
             // when
             Page<TodoResponse> actualPage = todoQueryService.findTodos(
@@ -136,8 +129,8 @@ class TodoQueryServiceImplTest {
         void search_todo_success() {
 
             // given
-            String expectedSearchTitle = "테스트";
-            String expectedSearchContents = "내용";
+            final String expectedSearchTitle = "테스트";
+            final String expectedSearchContents = "내용";
 
             // when
             Page<TodoResponse> actualPageSearchedTitle = todoQueryService.searchByContents(
@@ -164,6 +157,17 @@ class TodoQueryServiceImplTest {
                 assertNotNull(actualTodo.getContents());
                 assertTrue(actualTodo.getContents().contains(expectedSearchContents));
             });
+        }
+
+        private Todo mockEntity(Long id, String title, String contents) {
+            return Todo.builder()
+                    .isActive(true)
+                    .createdDate(LocalDateTime.now())
+                    .lastModifiedDate(LocalDateTime.now())
+                    .idx(id)
+                    .title(title)
+                    .contents(contents)
+                    .build();
         }
     }
 }
