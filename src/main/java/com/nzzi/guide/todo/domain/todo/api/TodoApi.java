@@ -1,11 +1,11 @@
 package com.nzzi.guide.todo.domain.todo.api;
 
+import com.nzzi.guide.todo.domain.todo.dto.TodoPredicate;
 import com.nzzi.guide.todo.domain.todo.dto.TodoRequest;
+import com.nzzi.guide.todo.domain.todo.dto.TodoResponse;
 import com.nzzi.guide.todo.domain.todo.model.Todo;
 import com.nzzi.guide.todo.domain.todo.service.TodoCommandService;
 import com.nzzi.guide.todo.domain.todo.service.TodoQueryService;
-import com.nzzi.guide.todo.domain.todo.dto.TodoPredicate;
-import com.nzzi.guide.todo.domain.todo.dto.TodoResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -13,12 +13,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.URI;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
