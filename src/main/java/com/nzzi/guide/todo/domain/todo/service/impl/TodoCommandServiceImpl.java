@@ -2,6 +2,7 @@ package com.nzzi.guide.todo.domain.todo.service.impl;
 
 import com.nzzi.guide.todo.domain.todo.dao.jpa.TodoRepository;
 import com.nzzi.guide.todo.domain.todo.dto.TodoRequest;
+import com.nzzi.guide.todo.domain.todo.dto.TodoResponse;
 import com.nzzi.guide.todo.domain.todo.exception.TodoNotFoundException;
 import com.nzzi.guide.todo.domain.todo.model.Todo;
 import com.nzzi.guide.todo.domain.todo.service.TodoCommandService;
@@ -18,27 +19,27 @@ public class TodoCommandServiceImpl implements TodoCommandService {
 
     @Override
     @Transactional
-    public Todo create(TodoRequest request) {
-        return todoRepository.save(request.toEntity());
+    public TodoResponse create(TodoRequest request) {
+        return TodoResponse.of(todoRepository.save(request.toEntity()));
     }
 
     @Override
     @Transactional
-    public Todo update(Long id, TodoRequest request) {
+    public TodoResponse update(Long id, TodoRequest request) {
         Todo target = findById(id);
         CustomMapper.getInstance()
                 .map(request.toEntity(), target);
 
-        return todoRepository.save(target);
+        return TodoResponse.of(todoRepository.save(target));
     }
 
     @Override
     @Transactional
-    public Todo delete(Long id) {
+    public TodoResponse delete(Long id) {
         Todo target = findById(id);
         todoRepository.delete(target);
 
-        return target;
+        return TodoResponse.of(target);
     }
 
     private Todo findById(Long id) {

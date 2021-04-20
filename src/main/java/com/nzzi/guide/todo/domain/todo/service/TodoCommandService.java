@@ -1,10 +1,10 @@
 package com.nzzi.guide.todo.domain.todo.service;
 
 import com.nzzi.guide.todo.domain.todo.dto.TodoRequest;
-import com.nzzi.guide.todo.domain.todo.model.Todo;
+import com.nzzi.guide.todo.domain.todo.dto.TodoResponse;
 
 public interface TodoCommandService {
-    Todo create(TodoRequest request);
-    Todo update(Long id, TodoRequest request);
-    Todo delete(Long id);
+    TodoResponse create(TodoRequest request);
+    TodoResponse update(Long id, TodoRequest request);
+    TodoResponse delete(Long id);
 }
