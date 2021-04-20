@@ -2529,3 +2529,694 @@ com.nzzi.guide.todo.domain.todo.exception.TodoNotFoundException: 4 is not found
 2021-04-20 18:50:25.202  INFO 17444 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
 2021-04-20 18:50:25.587  INFO 17444 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9530 (http) with context path '/v1'
 2021-04-20 18:50:25.599  INFO 17444 --- [main] com.nzzi.guide.todo.TodoApplication      : Started TodoApplication in 6.624 seconds (JVM running for 8.245)
+2021-04-20 19:21:44.365  INFO 16112 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Starting TodoQueryServiceImplTest using Java 1.8.0_121 on Choi with PID 16112 (started by Choi in N:\projects\guide_projects\todo)
+2021-04-20 19:21:44.368  INFO 16112 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : No active profile set, falling back to default profiles: default
+2021-04-20 19:21:46.078  INFO 16112 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-20 19:21:46.163  INFO 16112 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76 ms. Found 2 JPA repository interfaces.
+2021-04-20 19:21:46.708  INFO 16112 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@5e5aafc6' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:21:46.723  INFO 16112 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:21:47.002  INFO 16112 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-20 19:21:47.072  INFO 16112 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-20 19:21:47.257  INFO 16112 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-20 19:21:48.006  INFO 16112 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-20 19:21:48.179  INFO 16112 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+2021-04-20 19:21:48.183  INFO 16112 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-20 19:21:48.200  INFO 16112 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-20 19:21:49.129  INFO 16112 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-20 19:21:49.140  INFO 16112 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:21:49.912  WARN 16112 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-20 19:21:50.896  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/assets/**'] with []
+2021-04-20 19:21:50.897  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-04-20 19:21:50.897  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/health'] with []
+2021-04-20 19:21:50.897  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/actuator/**'] with []
+2021-04-20 19:21:50.897  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-20 19:21:50.898  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui/**'] with []
+2021-04-20 19:21:50.898  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs'] with []
+2021-04-20 19:21:50.898  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs/**'] with []
+2021-04-20 19:21:51.052  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@47f39279, org.springframework.security.web.context.SecurityContextPersistenceFilter@1ce57bbb, org.springframework.security.web.header.HeaderWriterFilter@5af4328e, org.springframework.security.web.authentication.logout.LogoutFilter@14d53884, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6d45dd4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@15ee8861, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3ce7a354, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@63ed5dae, org.springframework.security.web.session.SessionManagementFilter@5868ea91, org.springframework.security.web.access.ExceptionTranslationFilter@32cde414, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7857cb1d]
+2021-04-20 19:21:51.075  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@46fdfaeb with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@102aa5fc, org.springframework.security.web.context.SecurityContextPersistenceFilter@729a9c3d, org.springframework.security.web.header.HeaderWriterFilter@58486deb, org.springframework.security.web.authentication.logout.LogoutFilter@3d01ea33, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@257b6c58, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@574327ed, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4c7f2fdb, org.springframework.security.web.session.SessionManagementFilter@4e933cf1, org.springframework.security.web.access.ExceptionTranslationFilter@31b289da, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1ad9d5be]
+2021-04-20 19:21:51.748  INFO 16112 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-20 19:21:51.787  INFO 16112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d432d56, org.springframework.security.web.context.SecurityContextPersistenceFilter@796cf2b5, org.springframework.security.web.header.HeaderWriterFilter@1f6e6f50, org.springframework.web.filter.CorsFilter@147ad4bb, org.springframework.security.web.authentication.logout.LogoutFilter@690677de, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7a71ebf1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16890f00, org.springframework.security.web.session.SessionManagementFilter@1f7fcec2, org.springframework.security.web.access.ExceptionTranslationFilter@4f9980e1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@144dc2f7]
+2021-04-20 19:21:52.084  INFO 16112 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:21:52.647  INFO 16112 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Started TodoQueryServiceImplTest in 8.869 seconds (JVM running for 10.244)
+2021-04-20 19:21:52.873 ERROR 16112 --- [main] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@69504ae9] to prepare test instance [com.nzzi.guide.todo.domain.todo.service.impl.TodoQueryServiceImplTest@66b62332]
+
+org.mockito.exceptions.base.MockitoException: 
+Cannot instantiate @InjectMocks field named 'todoQueryServiceWithMock'! Cause: the type 'TodoQueryService' is an interface.
+You haven't provided the instance at field declaration so I tried to construct the instance.
+Examples of correct usage of @InjectMocks:
+   @InjectMocks Service service = new Service();
+   @InjectMocks Service service;
+   //and... don't forget about some @Mocks for injection :)
+
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.initMocks(MockitoTestExecutionListener.java:78) ~[spring-boot-test-2.4.3.jar:2.4.3]
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.prepareTestInstance(MockitoTestExecutionListener.java:55) ~[spring-boot-test-2.4.3.jar:2.4.3]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244) ~[spring-test-5.3.4.jar:5.3.4]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138) [spring-test-5.3.4.jar:5.3.4]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193) ~[na:1.8.0_121]
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175) ~[na:1.8.0_121]
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1374) ~[na:1.8.0_121]
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481) ~[na:1.8.0_121]
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471) ~[na:1.8.0_121]
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312) ~[na:1.8.0_121]
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:743) ~[na:1.8.0_121]
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742) ~[na:1.8.0_121]
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580) ~[na:1.8.0_121]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at java.util.Optional.orElseGet(Optional.java:267) ~[na:1.8.0_121]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at java.util.ArrayList.forEach(ArrayList.java:1249) ~[na:1.8.0_121]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at java.util.ArrayList.forEach(ArrayList.java:1249) ~[na:1.8.0_121]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:69) ~[junit5-rt.jar:na]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) ~[junit-rt.jar:na]
+
+2021-04-20 19:21:52.889 ERROR 16112 --- [main] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@69504ae9] to prepare test instance [com.nzzi.guide.todo.domain.todo.service.impl.TodoQueryServiceImplTest@33478a2f]
+
+org.mockito.exceptions.base.MockitoException: 
+Cannot instantiate @InjectMocks field named 'todoQueryServiceWithMock'! Cause: the type 'TodoQueryService' is an interface.
+You haven't provided the instance at field declaration so I tried to construct the instance.
+Examples of correct usage of @InjectMocks:
+   @InjectMocks Service service = new Service();
+   @InjectMocks Service service;
+   //and... don't forget about some @Mocks for injection :)
+
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.initMocks(MockitoTestExecutionListener.java:78) ~[spring-boot-test-2.4.3.jar:2.4.3]
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.prepareTestInstance(MockitoTestExecutionListener.java:55) ~[spring-boot-test-2.4.3.jar:2.4.3]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244) ~[spring-test-5.3.4.jar:5.3.4]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138) [spring-test-5.3.4.jar:5.3.4]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193) ~[na:1.8.0_121]
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175) ~[na:1.8.0_121]
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1374) ~[na:1.8.0_121]
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481) ~[na:1.8.0_121]
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471) ~[na:1.8.0_121]
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312) ~[na:1.8.0_121]
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:743) ~[na:1.8.0_121]
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742) ~[na:1.8.0_121]
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580) ~[na:1.8.0_121]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at java.util.Optional.orElseGet(Optional.java:267) ~[na:1.8.0_121]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at java.util.ArrayList.forEach(ArrayList.java:1249) ~[na:1.8.0_121]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at java.util.ArrayList.forEach(ArrayList.java:1249) ~[na:1.8.0_121]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:69) ~[junit5-rt.jar:na]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) ~[junit-rt.jar:na]
+
+2021-04-20 19:21:52.906 ERROR 16112 --- [main] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@69504ae9] to prepare test instance [com.nzzi.guide.todo.domain.todo.service.impl.TodoQueryServiceImplTest@d43f205]
+
+org.mockito.exceptions.base.MockitoException: 
+Cannot instantiate @InjectMocks field named 'todoQueryServiceWithMock'! Cause: the type 'TodoQueryService' is an interface.
+You haven't provided the instance at field declaration so I tried to construct the instance.
+Examples of correct usage of @InjectMocks:
+   @InjectMocks Service service = new Service();
+   @InjectMocks Service service;
+   //and... don't forget about some @Mocks for injection :)
+
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.initMocks(MockitoTestExecutionListener.java:78) ~[spring-boot-test-2.4.3.jar:2.4.3]
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.prepareTestInstance(MockitoTestExecutionListener.java:55) ~[spring-boot-test-2.4.3.jar:2.4.3]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244) ~[spring-test-5.3.4.jar:5.3.4]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138) [spring-test-5.3.4.jar:5.3.4]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193) ~[na:1.8.0_121]
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175) ~[na:1.8.0_121]
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1374) ~[na:1.8.0_121]
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481) ~[na:1.8.0_121]
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471) ~[na:1.8.0_121]
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312) ~[na:1.8.0_121]
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:743) ~[na:1.8.0_121]
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742) ~[na:1.8.0_121]
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580) ~[na:1.8.0_121]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at java.util.Optional.orElseGet(Optional.java:267) ~[na:1.8.0_121]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at java.util.ArrayList.forEach(ArrayList.java:1249) ~[na:1.8.0_121]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at java.util.ArrayList.forEach(ArrayList.java:1249) ~[na:1.8.0_121]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:69) ~[junit5-rt.jar:na]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) ~[junit-rt.jar:na]
+
+2021-04-20 19:21:52.914 ERROR 16112 --- [main] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@69504ae9] to prepare test instance [com.nzzi.guide.todo.domain.todo.service.impl.TodoQueryServiceImplTest@531292ed]
+
+org.mockito.exceptions.base.MockitoException: 
+Cannot instantiate @InjectMocks field named 'todoQueryServiceWithMock'! Cause: the type 'TodoQueryService' is an interface.
+You haven't provided the instance at field declaration so I tried to construct the instance.
+Examples of correct usage of @InjectMocks:
+   @InjectMocks Service service = new Service();
+   @InjectMocks Service service;
+   //and... don't forget about some @Mocks for injection :)
+
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.initMocks(MockitoTestExecutionListener.java:78) ~[spring-boot-test-2.4.3.jar:2.4.3]
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.prepareTestInstance(MockitoTestExecutionListener.java:55) ~[spring-boot-test-2.4.3.jar:2.4.3]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244) ~[spring-test-5.3.4.jar:5.3.4]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138) [spring-test-5.3.4.jar:5.3.4]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193) ~[na:1.8.0_121]
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175) ~[na:1.8.0_121]
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1374) ~[na:1.8.0_121]
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481) ~[na:1.8.0_121]
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471) ~[na:1.8.0_121]
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312) ~[na:1.8.0_121]
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:743) ~[na:1.8.0_121]
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742) ~[na:1.8.0_121]
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580) ~[na:1.8.0_121]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at java.util.Optional.orElseGet(Optional.java:267) ~[na:1.8.0_121]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at java.util.ArrayList.forEach(ArrayList.java:1249) ~[na:1.8.0_121]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at java.util.ArrayList.forEach(ArrayList.java:1249) ~[na:1.8.0_121]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:69) ~[junit5-rt.jar:na]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) ~[junit-rt.jar:na]
+
+2021-04-20 19:21:52.927 ERROR 16112 --- [main] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@69504ae9] to prepare test instance [com.nzzi.guide.todo.domain.todo.service.impl.TodoQueryServiceImplTest@44d2bbc0]
+
+org.mockito.exceptions.base.MockitoException: 
+Cannot instantiate @InjectMocks field named 'todoQueryServiceWithMock'! Cause: the type 'TodoQueryService' is an interface.
+You haven't provided the instance at field declaration so I tried to construct the instance.
+Examples of correct usage of @InjectMocks:
+   @InjectMocks Service service = new Service();
+   @InjectMocks Service service;
+   //and... don't forget about some @Mocks for injection :)
+
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.initMocks(MockitoTestExecutionListener.java:78) ~[spring-boot-test-2.4.3.jar:2.4.3]
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.prepareTestInstance(MockitoTestExecutionListener.java:55) ~[spring-boot-test-2.4.3.jar:2.4.3]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244) ~[spring-test-5.3.4.jar:5.3.4]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138) [spring-test-5.3.4.jar:5.3.4]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193) ~[na:1.8.0_121]
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175) ~[na:1.8.0_121]
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1374) ~[na:1.8.0_121]
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481) ~[na:1.8.0_121]
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471) ~[na:1.8.0_121]
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312) ~[na:1.8.0_121]
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:743) ~[na:1.8.0_121]
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742) ~[na:1.8.0_121]
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580) ~[na:1.8.0_121]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at java.util.Optional.orElseGet(Optional.java:267) ~[na:1.8.0_121]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258) [junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65) ~[junit-jupiter-engine-5.7.1.jar:5.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at java.util.ArrayList.forEach(ArrayList.java:1249) ~[na:1.8.0_121]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at java.util.ArrayList.forEach(ArrayList.java:1249) ~[na:1.8.0_121]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) ~[junit-platform-engine-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75) ~[junit-platform-launcher-1.7.1.jar:1.7.1]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:69) ~[junit5-rt.jar:na]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) ~[junit-rt.jar:na]
+
+2021-04-20 19:21:52.970  INFO 16112 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:21:52.975  INFO 16112 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:21:52.977  INFO 16112 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-20 19:21:52.994  INFO 16112 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-20 19:23:39.761  INFO 23076 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Starting TodoQueryServiceImplTest using Java 1.8.0_121 on Choi with PID 23076 (started by Choi in N:\projects\guide_projects\todo)
+2021-04-20 19:23:39.766  INFO 23076 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : No active profile set, falling back to default profiles: default
+2021-04-20 19:23:41.311  INFO 23076 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-20 19:23:41.427  INFO 23076 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 2 JPA repository interfaces.
+2021-04-20 19:23:42.067  INFO 23076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@5e5aafc6' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:23:42.082  INFO 23076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:23:42.432  INFO 23076 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-20 19:23:42.501  INFO 23076 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-20 19:23:42.719  INFO 23076 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-20 19:23:43.495  INFO 23076 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-20 19:23:43.687  INFO 23076 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+2021-04-20 19:23:43.692  INFO 23076 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-20 19:23:43.717  INFO 23076 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-20 19:23:44.565  INFO 23076 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-20 19:23:44.578  INFO 23076 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:23:45.371  WARN 23076 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-20 19:23:46.446  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/assets/**'] with []
+2021-04-20 19:23:46.447  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-04-20 19:23:46.447  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/health'] with []
+2021-04-20 19:23:46.447  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/actuator/**'] with []
+2021-04-20 19:23:46.448  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-20 19:23:46.448  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui/**'] with []
+2021-04-20 19:23:46.448  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs'] with []
+2021-04-20 19:23:46.448  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs/**'] with []
+2021-04-20 19:23:46.594  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3aa1c45, org.springframework.security.web.context.SecurityContextPersistenceFilter@40d370fa, org.springframework.security.web.header.HeaderWriterFilter@2555a986, org.springframework.security.web.authentication.logout.LogoutFilter@7fc56d61, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6fad5ace, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@757c685d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@362c48c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6d45dd4, org.springframework.security.web.session.SessionManagementFilter@75adb1c0, org.springframework.security.web.access.ExceptionTranslationFilter@783f5f71, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5a99543b]
+2021-04-20 19:23:46.618  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@1f3aa970 with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5213b887, org.springframework.security.web.context.SecurityContextPersistenceFilter@34d11c92, org.springframework.security.web.header.HeaderWriterFilter@f9cd1e6, org.springframework.security.web.authentication.logout.LogoutFilter@729a9c3d, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@58b5d5fc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31b289da, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58486deb, org.springframework.security.web.session.SessionManagementFilter@3ff53704, org.springframework.security.web.access.ExceptionTranslationFilter@7f8f5d37, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3023f157]
+2021-04-20 19:23:47.329  INFO 23076 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-20 19:23:47.365  INFO 23076 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@14bd523b, org.springframework.security.web.context.SecurityContextPersistenceFilter@1ad9d5be, org.springframework.security.web.header.HeaderWriterFilter@7fb5368e, org.springframework.web.filter.CorsFilter@cc7909f, org.springframework.security.web.authentication.logout.LogoutFilter@62a81453, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46fdfaeb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@102aa5fc, org.springframework.security.web.session.SessionManagementFilter@5847010, org.springframework.security.web.access.ExceptionTranslationFilter@cda144a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f9980e1]
+2021-04-20 19:23:47.599  INFO 23076 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:23:48.474  INFO 23076 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Started TodoQueryServiceImplTest in 9.448 seconds (JVM running for 10.814)
+2021-04-20 19:23:49.100  INFO 23076 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:23:49.105  INFO 23076 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:23:49.107  INFO 23076 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-20 19:23:49.114  INFO 23076 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-20 19:38:47.110  INFO 22940 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Starting TodoQueryServiceImplTest using Java 1.8.0_121 on Choi with PID 22940 (started by Choi in N:\projects\guide_projects\todo)
+2021-04-20 19:38:47.113  INFO 22940 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : No active profile set, falling back to default profiles: default
+2021-04-20 19:38:49.138  INFO 22940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-20 19:38:49.266  INFO 22940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 116 ms. Found 2 JPA repository interfaces.
+2021-04-20 19:38:50.005  INFO 22940 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@5807efad' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:38:50.024  INFO 22940 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:38:50.682  INFO 22940 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-20 19:38:50.811  INFO 22940 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-20 19:38:51.068  INFO 22940 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-20 19:38:51.949  INFO 22940 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-20 19:38:52.158  INFO 22940 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+2021-04-20 19:38:52.163  INFO 22940 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-20 19:38:52.183  INFO 22940 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-20 19:38:53.048  INFO 22940 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-20 19:38:53.058  INFO 22940 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:38:54.034  WARN 22940 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-20 19:38:55.241  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/assets/**'] with []
+2021-04-20 19:38:55.242  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-04-20 19:38:55.242  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/health'] with []
+2021-04-20 19:38:55.243  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/actuator/**'] with []
+2021-04-20 19:38:55.244  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-20 19:38:55.255  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui/**'] with []
+2021-04-20 19:38:55.256  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs'] with []
+2021-04-20 19:38:55.257  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs/**'] with []
+2021-04-20 19:38:55.598  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5f65e0c0, org.springframework.security.web.context.SecurityContextPersistenceFilter@31a024ea, org.springframework.security.web.header.HeaderWriterFilter@75adb1c0, org.springframework.security.web.authentication.logout.LogoutFilter@568c9ee1, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@63ed5dae, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@62aee901, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@27d5eb00, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@566cc6af, org.springframework.security.web.session.SessionManagementFilter@34626d4, org.springframework.security.web.access.ExceptionTranslationFilter@2555a986, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2e64ae1a]
+2021-04-20 19:38:55.657  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@cda144a with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7fb5368e, org.springframework.security.web.context.SecurityContextPersistenceFilter@3d01ea33, org.springframework.security.web.header.HeaderWriterFilter@4c7f2fdb, org.springframework.security.web.authentication.logout.LogoutFilter@8f589d7, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@1f3aa970, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@73b3ce31, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4687366b, org.springframework.security.web.session.SessionManagementFilter@1b5cf611, org.springframework.security.web.access.ExceptionTranslationFilter@574327ed, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@72bdbfe9]
+2021-04-20 19:38:56.409  INFO 22940 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-20 19:38:56.447  INFO 22940 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5e66733b, org.springframework.security.web.context.SecurityContextPersistenceFilter@58a7ca42, org.springframework.security.web.header.HeaderWriterFilter@eebd983, org.springframework.web.filter.CorsFilter@3694461d, org.springframework.security.web.authentication.logout.LogoutFilter@796cf2b5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4f9980e1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1f6e6f50, org.springframework.security.web.session.SessionManagementFilter@7a0f43dc, org.springframework.security.web.access.ExceptionTranslationFilter@4bab804f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1c5d376c]
+2021-04-20 19:38:56.702  INFO 22940 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:38:57.299  INFO 22940 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Started TodoQueryServiceImplTest in 11.248 seconds (JVM running for 12.926)
+2021-04-20 19:38:58.333  INFO 22940 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:38:58.338  INFO 22940 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:38:58.341  INFO 22940 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-20 19:38:58.347  INFO 22940 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-20 19:39:38.647  INFO 21980 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Starting TodoQueryServiceImplTest using Java 1.8.0_121 on Choi with PID 21980 (started by Choi in N:\projects\guide_projects\todo)
+2021-04-20 19:39:38.650  INFO 21980 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : No active profile set, falling back to default profiles: default
+2021-04-20 19:39:40.283  INFO 21980 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-20 19:39:40.385  INFO 21980 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 2 JPA repository interfaces.
+2021-04-20 19:39:40.981  INFO 21980 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@542f6803' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:39:40.998  INFO 21980 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:39:41.292  INFO 21980 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-20 19:39:41.366  INFO 21980 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-20 19:39:41.574  INFO 21980 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-20 19:39:42.333  INFO 21980 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-20 19:39:42.517  INFO 21980 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+2021-04-20 19:39:42.521  INFO 21980 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-20 19:39:42.539  INFO 21980 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-20 19:39:43.467  INFO 21980 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-20 19:39:43.479  INFO 21980 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:39:44.354  WARN 21980 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-20 19:39:45.380  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/assets/**'] with []
+2021-04-20 19:39:45.381  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-04-20 19:39:45.381  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/health'] with []
+2021-04-20 19:39:45.381  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/actuator/**'] with []
+2021-04-20 19:39:45.381  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-20 19:39:45.382  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui/**'] with []
+2021-04-20 19:39:45.382  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs'] with []
+2021-04-20 19:39:45.382  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs/**'] with []
+2021-04-20 19:39:45.527  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1fa58a48, org.springframework.security.web.context.SecurityContextPersistenceFilter@71eaef6a, org.springframework.security.web.header.HeaderWriterFilter@308be1a3, org.springframework.security.web.authentication.logout.LogoutFilter@3bc3d70e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@34f24a11, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@75adb1c0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ce57bbb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3921e96f, org.springframework.security.web.session.SessionManagementFilter@5265a8dd, org.springframework.security.web.access.ExceptionTranslationFilter@b5390, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@23ea3853]
+2021-04-20 19:39:45.544  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@5cdc8499 with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2a30b0cb, org.springframework.security.web.context.SecurityContextPersistenceFilter@566cc6af, org.springframework.security.web.header.HeaderWriterFilter@4deca78, org.springframework.security.web.authentication.logout.LogoutFilter@3ff53704, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@c7269ad, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@d70dbeb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7f8f5d37, org.springframework.security.web.session.SessionManagementFilter@5f65e0c0, org.springframework.security.web.access.ExceptionTranslationFilter@578198d9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7591cbd1]
+2021-04-20 19:39:46.348  INFO 21980 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-20 19:39:46.386  INFO 21980 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3694461d, org.springframework.security.web.context.SecurityContextPersistenceFilter@1c5cd2ea, org.springframework.security.web.header.HeaderWriterFilter@257b6c58, org.springframework.web.filter.CorsFilter@72641613, org.springframework.security.web.authentication.logout.LogoutFilter@5847010, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72bdbfe9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@cda144a, org.springframework.security.web.session.SessionManagementFilter@6ae32ff0, org.springframework.security.web.access.ExceptionTranslationFilter@6f4029e9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@62a81453]
+2021-04-20 19:39:46.688  INFO 21980 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:39:47.298  INFO 21980 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Started TodoQueryServiceImplTest in 9.545 seconds (JVM running for 10.946)
+2021-04-20 19:39:48.014  INFO 21980 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:39:48.019  INFO 21980 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:39:48.022  INFO 21980 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-20 19:39:48.040  INFO 21980 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-20 19:40:03.916  INFO 8136 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Starting TodoQueryServiceImplTest using Java 1.8.0_121 on Choi with PID 8136 (started by Choi in N:\projects\guide_projects\todo)
+2021-04-20 19:40:03.918  INFO 8136 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : No active profile set, falling back to default profiles: default
+2021-04-20 19:40:05.657  INFO 8136 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-20 19:40:05.776  INFO 8136 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 109 ms. Found 2 JPA repository interfaces.
+2021-04-20 19:40:06.488  INFO 8136 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@5b7aa898' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:40:06.521  INFO 8136 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:40:07.252  INFO 8136 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-20 19:40:07.455  INFO 8136 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-20 19:40:07.810  INFO 8136 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-20 19:40:08.707  INFO 8136 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-20 19:40:08.917  INFO 8136 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+2021-04-20 19:40:08.922  INFO 8136 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-20 19:40:08.944  INFO 8136 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-20 19:40:10.703  INFO 8136 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-20 19:40:10.716  INFO 8136 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:40:11.874  WARN 8136 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-20 19:40:13.432  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/assets/**'] with []
+2021-04-20 19:40:13.433  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-04-20 19:40:13.433  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/health'] with []
+2021-04-20 19:40:13.433  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/actuator/**'] with []
+2021-04-20 19:40:13.433  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-20 19:40:13.433  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui/**'] with []
+2021-04-20 19:40:13.434  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs'] with []
+2021-04-20 19:40:13.434  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs/**'] with []
+2021-04-20 19:40:13.640  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1b5cf611, org.springframework.security.web.context.SecurityContextPersistenceFilter@44948ac6, org.springframework.security.web.header.HeaderWriterFilter@62aee901, org.springframework.security.web.authentication.logout.LogoutFilter@30bf881e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@729a9c3d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3bc3d70e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6074d638, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3d01ea33, org.springframework.security.web.session.SessionManagementFilter@2b540131, org.springframework.security.web.access.ExceptionTranslationFilter@757c685d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1614499b]
+2021-04-20 19:40:13.663  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@1f6e6f50 with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1f7fcec2, org.springframework.security.web.context.SecurityContextPersistenceFilter@5b0e5d5f, org.springframework.security.web.header.HeaderWriterFilter@38445703, org.springframework.security.web.authentication.logout.LogoutFilter@5cdc8499, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@102aa5fc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@58b5d5fc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@42536da6, org.springframework.security.web.session.SessionManagementFilter@44ae6b66, org.springframework.security.web.access.ExceptionTranslationFilter@1c23e369, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f9980e1]
+2021-04-20 19:40:14.628  INFO 8136 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-20 19:40:14.669  INFO 8136 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7491cdae, org.springframework.security.web.context.SecurityContextPersistenceFilter@144dc2f7, org.springframework.security.web.header.HeaderWriterFilter@3bbc47c9, org.springframework.web.filter.CorsFilter@3050d479, org.springframework.security.web.authentication.logout.LogoutFilter@71f4aeb6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@403cff1c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@19677add, org.springframework.security.web.session.SessionManagementFilter@615e7fe7, org.springframework.security.web.access.ExceptionTranslationFilter@42f2cae8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@62f6185a]
+2021-04-20 19:40:14.983  INFO 8136 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:40:15.569  INFO 8136 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Started TodoQueryServiceImplTest in 12.332 seconds (JVM running for 13.779)
+2021-04-20 19:40:16.293  INFO 8136 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:40:16.298  INFO 8136 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:40:16.300  INFO 8136 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-20 19:40:16.307  INFO 8136 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-20 19:41:46.277  INFO 23144 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Starting TodoQueryServiceImplTest using Java 1.8.0_121 on Choi with PID 23144 (started by Choi in N:\projects\guide_projects\todo)
+2021-04-20 19:41:46.281  INFO 23144 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : No active profile set, falling back to default profiles: default
+2021-04-20 19:41:47.820  INFO 23144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-20 19:41:47.938  INFO 23144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 2 JPA repository interfaces.
+2021-04-20 19:41:48.647  INFO 23144 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@5807efad' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:41:48.664  INFO 23144 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:41:49.021  INFO 23144 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-20 19:41:49.090  INFO 23144 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-20 19:41:49.270  INFO 23144 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-20 19:41:50.028  INFO 23144 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-20 19:41:50.211  INFO 23144 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+2021-04-20 19:41:50.215  INFO 23144 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-20 19:41:50.234  INFO 23144 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-20 19:41:51.140  INFO 23144 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-20 19:41:51.151  INFO 23144 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:41:52.008  WARN 23144 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-20 19:41:53.296  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/assets/**'] with []
+2021-04-20 19:41:53.297  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-04-20 19:41:53.297  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/health'] with []
+2021-04-20 19:41:53.297  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/actuator/**'] with []
+2021-04-20 19:41:53.297  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-20 19:41:53.298  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui/**'] with []
+2021-04-20 19:41:53.298  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs'] with []
+2021-04-20 19:41:53.298  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs/**'] with []
+2021-04-20 19:41:53.448  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@c7269ad, org.springframework.security.web.context.SecurityContextPersistenceFilter@402feb85, org.springframework.security.web.header.HeaderWriterFilter@4c91f5bf, org.springframework.security.web.authentication.logout.LogoutFilter@24731caf, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1a914a00, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@126ff1a1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@538a90a5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1c23e369, org.springframework.security.web.session.SessionManagementFilter@7fc56d61, org.springframework.security.web.access.ExceptionTranslationFilter@29b4444a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@f9cd1e6]
+2021-04-20 19:41:53.467  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@615e7fe7 with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@144dc2f7, org.springframework.security.web.context.SecurityContextPersistenceFilter@5213b887, org.springframework.security.web.header.HeaderWriterFilter@3023f157, org.springframework.security.web.authentication.logout.LogoutFilter@6ae32ff0, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@796cf2b5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@40c6d1ef, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6f4029e9, org.springframework.security.web.session.SessionManagementFilter@1f3aa970, org.springframework.security.web.access.ExceptionTranslationFilter@8e3449e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3bbc47c9]
+2021-04-20 19:41:54.317  INFO 23144 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-20 19:41:54.353  INFO 23144 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2979c6ef, org.springframework.security.web.context.SecurityContextPersistenceFilter@34b462e0, org.springframework.security.web.header.HeaderWriterFilter@fd0e118, org.springframework.web.filter.CorsFilter@1af6974c, org.springframework.security.web.authentication.logout.LogoutFilter@96dfcbb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@446f3a53, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4c3fcbe7, org.springframework.security.web.session.SessionManagementFilter@62f6185a, org.springframework.security.web.access.ExceptionTranslationFilter@5b0575d0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6c8d638a]
+2021-04-20 19:41:54.634  INFO 23144 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:41:55.256  INFO 23144 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Started TodoQueryServiceImplTest in 9.809 seconds (JVM running for 11.282)
+2021-04-20 19:41:56.003  INFO 23144 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:41:56.009  INFO 23144 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:41:56.012  INFO 23144 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-20 19:41:56.021  INFO 23144 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-20 19:45:10.206  INFO 23204 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Starting TodoQueryServiceImplTest using Java 1.8.0_121 on Choi with PID 23204 (started by Choi in N:\projects\guide_projects\todo)
+2021-04-20 19:45:10.209  INFO 23204 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : No active profile set, falling back to default profiles: default
+2021-04-20 19:45:12.497  INFO 23204 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-20 19:45:12.592  INFO 23204 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 2 JPA repository interfaces.
+2021-04-20 19:45:13.413  INFO 23204 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@71b639d0' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:45:13.427  INFO 23204 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:45:13.769  INFO 23204 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-20 19:45:13.846  INFO 23204 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-20 19:45:14.094  INFO 23204 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-20 19:45:14.956  INFO 23204 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-20 19:45:15.206  INFO 23204 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+2021-04-20 19:45:15.210  INFO 23204 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-20 19:45:15.228  INFO 23204 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-20 19:45:16.286  INFO 23204 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-20 19:45:16.296  INFO 23204 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:45:17.795  WARN 23204 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-20 19:45:19.178  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/assets/**'] with []
+2021-04-20 19:45:19.178  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-04-20 19:45:19.178  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/health'] with []
+2021-04-20 19:45:19.178  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/actuator/**'] with []
+2021-04-20 19:45:19.179  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-20 19:45:19.179  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui/**'] with []
+2021-04-20 19:45:19.179  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs'] with []
+2021-04-20 19:45:19.180  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs/**'] with []
+2021-04-20 19:45:19.326  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3aa1c45, org.springframework.security.web.context.SecurityContextPersistenceFilter@40d370fa, org.springframework.security.web.header.HeaderWriterFilter@2555a986, org.springframework.security.web.authentication.logout.LogoutFilter@7fc56d61, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6fad5ace, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@757c685d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@362c48c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6d45dd4, org.springframework.security.web.session.SessionManagementFilter@75adb1c0, org.springframework.security.web.access.ExceptionTranslationFilter@783f5f71, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5a99543b]
+2021-04-20 19:45:19.348  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@1f3aa970 with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5213b887, org.springframework.security.web.context.SecurityContextPersistenceFilter@34d11c92, org.springframework.security.web.header.HeaderWriterFilter@f9cd1e6, org.springframework.security.web.authentication.logout.LogoutFilter@729a9c3d, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@58b5d5fc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31b289da, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58486deb, org.springframework.security.web.session.SessionManagementFilter@3ff53704, org.springframework.security.web.access.ExceptionTranslationFilter@7f8f5d37, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3023f157]
+2021-04-20 19:45:20.902  INFO 23204 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-20 19:45:20.972  INFO 23204 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c538e62, org.springframework.security.web.context.SecurityContextPersistenceFilter@1ad9d5be, org.springframework.security.web.header.HeaderWriterFilter@7fb5368e, org.springframework.web.filter.CorsFilter@ca0a21f, org.springframework.security.web.authentication.logout.LogoutFilter@62a81453, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46fdfaeb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@102aa5fc, org.springframework.security.web.session.SessionManagementFilter@5847010, org.springframework.security.web.access.ExceptionTranslationFilter@cda144a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f9980e1]
+2021-04-20 19:45:21.564  INFO 23204 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:45:22.756  INFO 23204 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Started TodoQueryServiceImplTest in 13.452 seconds (JVM running for 14.966)
+2021-04-20 19:45:23.556  INFO 23204 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:45:23.561  INFO 23204 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:45:23.563  INFO 23204 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-20 19:45:23.572  INFO 23204 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-20 19:46:03.825  INFO 23044 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Starting TodoQueryServiceImplTest using Java 1.8.0_121 on Choi with PID 23044 (started by Choi in N:\projects\guide_projects\todo)
+2021-04-20 19:46:03.828  INFO 23044 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : No active profile set, falling back to default profiles: default
+2021-04-20 19:46:05.604  INFO 23044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-20 19:46:05.701  INFO 23044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86 ms. Found 2 JPA repository interfaces.
+2021-04-20 19:46:06.354  INFO 23044 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2fd954f' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:46:06.370  INFO 23044 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:46:06.828  INFO 23044 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-20 19:46:06.940  INFO 23044 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-20 19:46:07.173  INFO 23044 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-20 19:46:08.153  INFO 23044 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-20 19:46:08.337  INFO 23044 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+2021-04-20 19:46:08.341  INFO 23044 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-20 19:46:08.359  INFO 23044 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-20 19:46:09.349  INFO 23044 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-20 19:46:09.362  INFO 23044 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:46:10.260  WARN 23044 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-20 19:46:11.385  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/assets/**'] with []
+2021-04-20 19:46:11.385  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-04-20 19:46:11.385  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/health'] with []
+2021-04-20 19:46:11.385  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/actuator/**'] with []
+2021-04-20 19:46:11.386  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-20 19:46:11.386  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui/**'] with []
+2021-04-20 19:46:11.386  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs'] with []
+2021-04-20 19:46:11.386  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs/**'] with []
+2021-04-20 19:46:11.523  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@73d7d676, org.springframework.security.web.context.SecurityContextPersistenceFilter@546c30c2, org.springframework.security.web.header.HeaderWriterFilter@3bc3d70e, org.springframework.security.web.authentication.logout.LogoutFilter@a1d926b, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@c7269ad, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@568c9ee1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@624494d4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@8e3449e, org.springframework.security.web.session.SessionManagementFilter@402feb85, org.springframework.security.web.access.ExceptionTranslationFilter@2d34866a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@31b289da]
+2021-04-20 19:46:11.539  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@62f6185a with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@34b462e0, org.springframework.security.web.context.SecurityContextPersistenceFilter@1ad9d5be, org.springframework.security.web.header.HeaderWriterFilter@7fb5368e, org.springframework.security.web.authentication.logout.LogoutFilter@62a81453, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@403cff1c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46fdfaeb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@102aa5fc, org.springframework.security.web.session.SessionManagementFilter@5847010, org.springframework.security.web.access.ExceptionTranslationFilter@cda144a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@fd0e118]
+2021-04-20 19:46:12.320  INFO 23044 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-20 19:46:12.362  INFO 23044 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21046afa, org.springframework.security.web.context.SecurityContextPersistenceFilter@117069f2, org.springframework.security.web.header.HeaderWriterFilter@372841d2, org.springframework.web.filter.CorsFilter@552fffc8, org.springframework.security.web.authentication.logout.LogoutFilter@17034458, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@77ebc9e6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2b82018, org.springframework.security.web.session.SessionManagementFilter@6c8d638a, org.springframework.security.web.access.ExceptionTranslationFilter@51c6e775, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f0c1409]
+2021-04-20 19:46:12.632  INFO 23044 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:46:13.217  INFO 23044 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Started TodoQueryServiceImplTest in 10.144 seconds (JVM running for 11.58)
+2021-04-20 19:46:13.973  INFO 23044 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:46:13.978  INFO 23044 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:46:13.980  INFO 23044 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-20 19:46:13.986  INFO 23044 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-20 19:48:33.027  INFO 22816 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Starting TodoQueryServiceImplTest using Java 1.8.0_121 on Choi with PID 22816 (started by Choi in N:\projects\guide_projects\todo)
+2021-04-20 19:48:33.034  INFO 22816 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : No active profile set, falling back to default profiles: default
+2021-04-20 19:48:34.620  INFO 22816 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-20 19:48:34.742  INFO 22816 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111 ms. Found 2 JPA repository interfaces.
+2021-04-20 19:48:35.329  INFO 22816 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@7c51782d' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:48:35.344  INFO 22816 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-20 19:48:35.635  INFO 22816 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-20 19:48:35.709  INFO 22816 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-20 19:48:35.908  INFO 22816 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-20 19:48:36.671  INFO 22816 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-20 19:48:36.846  INFO 22816 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (com.mysql.jdbc.JDBC4Connection.getNetworkTimeout()I)
+2021-04-20 19:48:36.849  INFO 22816 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-20 19:48:36.868  INFO 22816 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-04-20 19:48:37.830  INFO 22816 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-20 19:48:37.842  INFO 22816 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:48:38.544  WARN 22816 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-20 19:48:39.778  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/assets/**'] with []
+2021-04-20 19:48:39.778  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-04-20 19:48:39.778  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/health'] with []
+2021-04-20 19:48:39.778  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/actuator/**'] with []
+2021-04-20 19:48:39.779  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-20 19:48:39.779  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui/**'] with []
+2021-04-20 19:48:39.779  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs'] with []
+2021-04-20 19:48:39.779  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/api-docs/**'] with []
+2021-04-20 19:48:39.916  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ca907af, org.springframework.security.web.context.SecurityContextPersistenceFilter@63b0b3dd, org.springframework.security.web.header.HeaderWriterFilter@7d3815f7, org.springframework.security.web.authentication.logout.LogoutFilter@6afaf27, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@23ea3853, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@783f5f71, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@78e50fca, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3ef396c9, org.springframework.security.web.session.SessionManagementFilter@b5390, org.springframework.security.web.access.ExceptionTranslationFilter@578d5d02, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4301fa39]
+2021-04-20 19:48:39.930  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@73b3ce31 with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4687366b, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f6d36eb, org.springframework.security.web.header.HeaderWriterFilter@30a20fb3, org.springframework.security.web.authentication.logout.LogoutFilter@6fad5ace, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@31b289da, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f5ac587, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1fa58a48, org.springframework.security.web.session.SessionManagementFilter@34f24a11, org.springframework.security.web.access.ExceptionTranslationFilter@6eadd342, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3d01ea33]
+2021-04-20 19:48:40.687  INFO 22816 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-20 19:48:40.739  INFO 22816 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29d33f1, org.springframework.security.web.context.SecurityContextPersistenceFilter@44ae6b66, org.springframework.security.web.header.HeaderWriterFilter@1c23e369, org.springframework.web.filter.CorsFilter@77e5c765, org.springframework.security.web.authentication.logout.LogoutFilter@7591cbd1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b0e5d5f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58b5d5fc, org.springframework.security.web.session.SessionManagementFilter@38445703, org.springframework.security.web.access.ExceptionTranslationFilter@c7269ad, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3023f157]
+2021-04-20 19:48:41.091  INFO 22816 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:48:41.735  INFO 22816 --- [main] c.n.g.t.d.t.s.i.TodoQueryServiceImplTest : Started TodoQueryServiceImplTest in 9.363 seconds (JVM running for 10.786)
+2021-04-20 19:48:42.484  INFO 22816 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-20 19:48:42.489  INFO 22816 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-20 19:48:42.492  INFO 22816 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-20 19:48:42.499  INFO 22816 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
