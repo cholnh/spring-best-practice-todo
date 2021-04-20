@@ -7,8 +7,9 @@ import com.nzzi.guide.todo.domain.todo.exception.TodoNotFoundException;
 import com.nzzi.guide.todo.domain.todo.model.Todo;
 import com.nzzi.guide.todo.domain.todo.service.TodoQueryService;
 import com.nzzi.guide.todo.global.error.exception.ErrorCode;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -25,7 +26,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@Slf4j
 @SpringBootTest
 class TodoQueryServiceImplTest {
 
@@ -42,119 +42,128 @@ class TodoQueryServiceImplTest {
     void setUp() {
     }
 
-    @Test
-    void Todo정보를_정상적으로_가져온다() {
+    @Nested
+    class TodoFind {
 
-        // given (해당 테스트는 mock 사용할 필요 없지만 예시를 위해 사용)
-        Long expectedId = 1L;
-        Todo mockEntity = Todo.builder()
-                .isActive(true)
-                .createdDate(LocalDateTime.now())
-                .lastModifiedDate(LocalDateTime.now())
-                .idx(expectedId)
-                .title("타이틀")
-                .contents("콘텐츠")
-                .build();
-        when(mockTodoRepository.findById(expectedId))
-                .thenReturn(Optional.ofNullable(mockEntity));
+        @Test
+        @DisplayName("Todo 정보를 정상적으로 가져온다.")
+        void find_todo_success() {
 
-        // when
-        TodoResponse actualTodo = todoQueryServiceWithMock.findTodo(expectedId);
+            // given (해당 테스트는 mock 사용할 필요 없지만 예시를 위해 사용)
+            Long expectedId = 1L;
+            Todo mockEntity = Todo.builder()
+                    .isActive(true)
+                    .createdDate(LocalDateTime.now())
+                    .lastModifiedDate(LocalDateTime.now())
+                    .idx(expectedId)
+                    .title("타이틀")
+                    .contents("콘텐츠")
+                    .build();
+            when(mockTodoRepository.findById(expectedId))
+                    .thenReturn(Optional.ofNullable(mockEntity));
 
-        // then
-        assertNotNull(actualTodo.getCreatedDate());
-        assertNotNull(actualTodo.getLastModifiedDate());
-        assertNotNull(actualTodo.getIdx());
-        assertNotNull(actualTodo.getTitle());
-        assertNotNull(actualTodo.getContents());
-        assertEquals(expectedId, actualTodo.getIdx());
-    }
+            // when
+            TodoResponse actualTodoResponse = todoQueryServiceWithMock.findTodo(expectedId);
 
-    @Test
-    void 등록되지않은_Todo조회는_예외를_발생시킨다() {
+            // then
+            assertNotNull(actualTodoResponse.getCreatedDate());
+            assertNotNull(actualTodoResponse.getLastModifiedDate());
+            assertNotNull(actualTodoResponse.getIdx());
+            assertNotNull(actualTodoResponse.getTitle());
+            assertNotNull(actualTodoResponse.getContents());
+            assertEquals(expectedId, actualTodoResponse.getIdx());
+        }
 
-        // given
-        Long idForExceptionExpected = -1L;
+        @Test
+        @DisplayName("등록되지 않은 Todo 조회는 예외를 발생시킨다.")
+        void find_todo_fail() {
 
-        // when
-        TodoNotFoundException expectedException = assertThrows(TodoNotFoundException.class,
-                () -> todoQueryService.findTodo(idForExceptionExpected));
+            // given
+            Long idForExceptionExpected = -1L;
 
-        // then
-        assertEquals(expectedException.getErrorCode(), ErrorCode.ENTITY_NOT_FOUND);
-        assertEquals(expectedException.getMessage(), "not found");
-    }
+            // when
+            TodoNotFoundException expectedException = assertThrows(TodoNotFoundException.class,
+                    () -> todoQueryService.findTodo(idForExceptionExpected));
 
-    @Test
-    void Todo목록을_page형태로_정상적으로_가져온다() {
+            // then
+            assertEquals(expectedException.getErrorCode(), ErrorCode.ENTITY_NOT_FOUND);
+            assertEquals(expectedException.getMessage(), "not found");
+        }
 
-        // given
-        Pageable pageable = Pageable.unpaged();
+        @Test
+        @DisplayName("Todo 목록 전체를 page 형태로 가져온다.")
+        void find_all_todo_success() {
 
-        // when
-        Page<TodoResponse> actualPage = todoQueryService.findTodos(pageable);
+            // given
+            Pageable pageable = Pageable.unpaged();
 
-        // then
-        actualPage.forEach(actualTodo -> {
-            assertNotNull(actualTodo.getCreatedDate());
-            assertNotNull(actualTodo.getLastModifiedDate());
-            assertNotNull(actualTodo.getIdx());
-            assertNotNull(actualTodo.getTitle());
-            assertNotNull(actualTodo.getContents());
-        });
-    }
+            // when
+            Page<TodoResponse> actualPage = todoQueryService.findTodos(pageable);
 
-    @Test
-    void Todo목록을_page형태로_가져온다() {
+            // then
+            actualPage.forEach(actualTodo -> {
+                assertNotNull(actualTodo.getCreatedDate());
+                assertNotNull(actualTodo.getLastModifiedDate());
+                assertNotNull(actualTodo.getIdx());
+                assertNotNull(actualTodo.getTitle());
+                assertNotNull(actualTodo.getContents());
+            });
+        }
 
-        // given
-        int expectedPage = 0;
-        int expectedSize = 10;
-        Sort.Direction expectedDirection = Sort.Direction.DESC;
-        String expectedProperty = "idx";
+        @Test
+        @DisplayName("size, page 가 정해진 Todo 목록을 page 형태로 가져온다.")
+        void find_all_todo_with_page_success() {
 
-        // when
-        Page<TodoResponse> actualPage = todoQueryService.findTodos(
-                PageRequest.of(expectedPage, expectedSize,
-                    Sort.by(expectedDirection, expectedProperty)));
+            // given
+            int expectedPage = 0;
+            int expectedSize = 10;
+            Sort.Direction expectedDirection = Sort.Direction.DESC;
+            String expectedProperty = "idx";
 
-        // then
-        assertEquals(expectedPage, actualPage.getPageable().getPageNumber());
-        assertEquals(expectedSize, actualPage.getPageable().getPageSize());
-        assertTrue(actualPage.getSort().isSorted());
-    }
+            // when
+            Page<TodoResponse> actualPage = todoQueryService.findTodos(
+                    PageRequest.of(expectedPage, expectedSize,
+                            Sort.by(expectedDirection, expectedProperty)));
 
-    @Test
-    void 컨텐츠로_검색된_Todo정보를_가져온다() {
+            // then
+            assertEquals(expectedPage, actualPage.getPageable().getPageNumber());
+            assertEquals(expectedSize, actualPage.getPageable().getPageSize());
+            assertTrue(actualPage.getSort().isSorted());
+        }
 
-        // given
-        String expectedSearchTitle = "테스트";
-        String expectedSearchContents = "내용";
+        @Test
+        @DisplayName("각 필드값으로 검색된 Todo 정보를 가져온다.")
+        void search_todo_success() {
 
-        // when
-        Page<TodoResponse> actualPageSearchedTitle = todoQueryService.searchByContents(
-                TodoPredicate.of("title=" + expectedSearchTitle),
-                Pageable.unpaged());
-        Page<TodoResponse> actualPageSearchedContents = todoQueryService.searchByContents(
-                TodoPredicate.of("contents=" + expectedSearchContents),
-                Pageable.unpaged());
+            // given
+            String expectedSearchTitle = "테스트";
+            String expectedSearchContents = "내용";
 
-        // then
-        actualPageSearchedTitle.forEach(actualTodo -> {
-            assertNotNull(actualTodo.getCreatedDate());
-            assertNotNull(actualTodo.getLastModifiedDate());
-            assertNotNull(actualTodo.getIdx());
-            assertNotNull(actualTodo.getTitle());
-            assertNotNull(actualTodo.getContents());
-            assertTrue(actualTodo.getTitle().contains(expectedSearchTitle));
-        });
-        actualPageSearchedContents.forEach(actualTodo -> {
-            assertNotNull(actualTodo.getCreatedDate());
-            assertNotNull(actualTodo.getLastModifiedDate());
-            assertNotNull(actualTodo.getIdx());
-            assertNotNull(actualTodo.getTitle());
-            assertNotNull(actualTodo.getContents());
-            assertTrue(actualTodo.getContents().contains(expectedSearchContents));
-        });
+            // when
+            Page<TodoResponse> actualPageSearchedTitle = todoQueryService.searchByContents(
+                    TodoPredicate.of("title=" + expectedSearchTitle),
+                    Pageable.unpaged());
+            Page<TodoResponse> actualPageSearchedContents = todoQueryService.searchByContents(
+                    TodoPredicate.of("contents=" + expectedSearchContents),
+                    Pageable.unpaged());
+
+            // then
+            actualPageSearchedTitle.forEach(actualTodo -> {
+                assertNotNull(actualTodo.getCreatedDate());
+                assertNotNull(actualTodo.getLastModifiedDate());
+                assertNotNull(actualTodo.getIdx());
+                assertNotNull(actualTodo.getTitle());
+                assertNotNull(actualTodo.getContents());
+                assertTrue(actualTodo.getTitle().contains(expectedSearchTitle));
+            });
+            actualPageSearchedContents.forEach(actualTodo -> {
+                assertNotNull(actualTodo.getCreatedDate());
+                assertNotNull(actualTodo.getLastModifiedDate());
+                assertNotNull(actualTodo.getIdx());
+                assertNotNull(actualTodo.getTitle());
+                assertNotNull(actualTodo.getContents());
+                assertTrue(actualTodo.getContents().contains(expectedSearchContents));
+            });
+        }
     }
 }
