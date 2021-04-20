@@ -2,14 +2,13 @@ package com.nzzi.guide.todo.domain.todo.dto;
 
 import com.nzzi.guide.todo.domain.todo.model.QTodo;
 import com.querydsl.core.BooleanBuilder;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.util.Arrays;
 
 @Getter
-@AllArgsConstructor(staticName = "of")
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TodoPredicate {
 
@@ -39,7 +38,7 @@ public class TodoPredicate {
         Arrays.asList(queryString.split(DELIMITER_QUERY))
                 .forEach((queryKeyValue) -> {
             String key = queryKeyValue.split(DELIMITER_KEY_VALUE)[0];
-            String value = queryKeyValue.split(DELIMITER_KEY_VALUE)[0];
+            String value = queryKeyValue.split(DELIMITER_KEY_VALUE)[1];
             mapping(todoPredicate, key, value);
         });
 
