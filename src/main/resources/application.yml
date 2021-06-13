@@ -34,9 +34,9 @@ spring:
   # DATASOURCE
   datasource:
     hikari:
-      jdbc-url: jdbc:mysql://localhost:3306/db_nteve_todo_v1?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&useSSL=false&validationQuery=select 1&serverTimezone=Asia/Seoul
-      username: nakzzi
-      password: skrwl486
+      jdbc-url: ENC(RKLbsMR7Ra6c2rgVZdhj3WbWGz0P/L2iiqWVklKU4Wq7tbozWxMYzW9zswWMuaR+9xK+mNw385dRvJ4eV9Uf83T06wJiTus2Lv1MC9hJioTBvSM4t2PN1te4odqnyGuCzwyZz2H3F7i+Yyh/w2J6jl58cRpWoYaaimtzWz7Exs1vEAfo623N21N5TAiC2cJwAr/6tZeEoTBBem1QEVFCkcFQje5uZ8SzOfnONre3a+wjFkE+uq5SVQ==)
+      username: ENC(pFhmpGL2DAHHDxwQsds4BQ==)
+      password: ENC(BdbbzfbSMzI8szOCM1iEHxwJtEZMPaE9)
       connection-init-sql: "SET NAMES 'utf8mb4'"  # 이모지 사용
 
   # DATA REST
@@ -78,4 +78,9 @@ management:
       exposure:
         include: health, info, prometheus
         exclude: env, beans
+---
+# JASYPT
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
 ---
