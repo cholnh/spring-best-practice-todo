@@ -3,7 +3,6 @@ package com.nzzi.guide.todo.domain.todo.api;
 import com.nzzi.guide.todo.domain.todo.dto.TodoPredicate;
 import com.nzzi.guide.todo.domain.todo.dto.TodoRequest;
 import com.nzzi.guide.todo.domain.todo.dto.TodoResponse;
-import com.nzzi.guide.todo.domain.todo.model.Todo;
 import com.nzzi.guide.todo.domain.todo.service.TodoCommandService;
 import com.nzzi.guide.todo.domain.todo.service.TodoQueryService;
 import lombok.AllArgsConstructor;
