@@ -30,7 +30,7 @@
 다양한 인터페이스(Repository, Event-message, API call proxy 등) 적용이 필요하므로  
 `헥사고날 아키텍처`를 지향한 구조를 사용하여 서비스 내부 구조를 유연하고 기민하게 적용하겠습니다.  
 
-|<img src="https://github.com/cholnh/spring-best-practice-todo/blob/main/assets/images/guide-directory/ddd-hex-arch-1.png" width="800"/>|
+|<img src="https://github.com/cholnh/spring-best-practice-todo/blob/master/assets/images/guide-directory/ddd-hex-arch-1.png" width="800"/>|
 |-|
 |헥사고날 아키텍처의 포트와 어댑터|
 
@@ -71,7 +71,7 @@
 
 전체적인 내부 구조의 모양은 다음과 같습니다.
 
-|<img src="https://github.com/cholnh/spring-best-practice-todo/blob/main/assets/images/guide-directory/ddd-hex-domain-2.png" width="900"/>|
+|<img src="https://github.com/cholnh/spring-best-practice-todo/blob/master/assets/images/guide-directory/ddd-hex-domain-2.png" width="900"/>|
 |-|
 |마이크로 서비스의 내부 구조|
 
