@@ -22,3 +22,12 @@
 - Exception 스타일 가이드
 
 <br/><br/>
+
+## :monocle_face: 참고
+
+- [cheese10yun/spring-guide](https://github.com/cheese10yun/spring-guide) 참고
+- 도메인 주도 설계로 시작하는 마이크로서비스 개발 (한정헌, 유해식, 최은정, 이주영 저)
+- 테스트 주도 개발로 배우는 객체 지향 설계와 실천 (Steve Freeman, Nat Pryce 저)
+- Clean Code (Robert C. Martin 저)
+- Mastering Spring 5.0 (Ranga Rao Karanam 저)
+- JAVA 객체 지향 디자인 패턴 (정인상, 채흥석 저)
