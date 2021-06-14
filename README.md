@@ -13,7 +13,7 @@
 
 ## :memo: Table of Contents
 
-- 아키텍처 및 Directory 스타일 가이드
+- [아키텍처 및 Directory 스타일 가이드](https://github.com/cholnh/spring-best-practice-todo/blob/master/contents/guide-directory.md#아키텍처-및-directory-스타일-가이드)
 - Domain Model 및 범위 가이드
 - Service 스타일 가이드
 - DAO 스타일 가이드
