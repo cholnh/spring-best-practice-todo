@@ -30,4 +30,3 @@
 - 테스트 주도 개발로 배우는 객체 지향 설계와 실천 (Steve Freeman, Nat Pryce 저)
 - Clean Code (Robert C. Martin 저)
 - Mastering Spring 5.0 (Ranga Rao Karanam 저)
-- JAVA 객체 지향 디자인 패턴 (정인상, 채흥석 저)
