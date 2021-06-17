@@ -174,6 +174,109 @@ public abstract class Auditable implements Serializable {
     `@Column` 어노테이션 속성 중 하나인 `columnDefinition` 은 컬럼의 기본값을 지정해줍니다.  
     `TIMESTAMP DEFAULT CURRENT_TIMESTAMP` 은 TIMESTAMP 기본값을 현재 시간으로 저장합니다.
 
+<br/><br/>
+
+
+
+## 임베디드 타입
+
+JPA 에서는 새로운 값 타입(VO)을 직접 정의해서 사용할 수 있는데 이것을 임베디드 타입이라 합니다.  
+(직접 정의한 임베디드 타입은 int, String 처럼 값 타입이 되게 됩니다)
+
+<br/>
+
+`@Embedded` 와 `@Embeddable` 을 통해 도메인 객체의 책임을 나눌 수 있습니다.  
+임베디드 타입을 포함한 모든 값(VO) 타입은 엔티티의 생명주기에 의존하게 됩니다.  
+
+<br/>
+
+예시를 보겠습니다.  
+
+```java
+@Data
+@Embeddable
+@NoArgsConstructor(access = AccessLevel.PROTECTED) 
+public class Password {
+
+    @Column(name = "password_value", nullable = false, length = 255)
+    @JsonIgnore
+    private String passwordValue;
+
+    @Column(name = "password_failed_count", nullable = false, columnDefinition = "INT default 0")
+    @PositiveOrZero
+    private int failedCount;
+
+    @Builder
+    public Password(String passwordValue, @PositiveOrZero int failedCount) {
+        this.passwordValue = passwordValue;
+        this.failedCount = failedCount;
+    }
+}
+```
+
+값 객체로 정의할 클래스 상단에 `@Embeddable` 를 선언합니다.  
+사용하는 쪽 필드엔 `@Embedded` 를 선언합니다.  
+
+<br/>
+
+위와 같이 임베디드 타입을 사용하게 되면 코드의 응집력이 증가될 뿐만 아니라 책임이 고르게 분산되고  
+코드 중복을 방지하며 추후 테스트 코드 작성에 편리하게 됩니다.
+
+<br/><br/>
+
+
+
+## Rich Object
+
+객체지향에서 중요한 것들이 많겠지만 그중에 하나가 객체 본인의 책임을 다하는 것입니다.  
+객체가 자기 자신의 책임을 다하지 않으면 그 책임은 다른 객체에게 넘어가게 됩니다.
+
+<br/>
+
+도메인 객체들에 기본적인 getter, setter 외에는 메서드를 작성하지 않는 경우가 있습니다.  
+이렇게 되면 객체 본인의 책임을 다하지 않으니 이런 책임들이 다른 객체에서 이루어지게 됩니다.  
+위에서 언급하였듯이 그 책임은 다른 객체에게 넘어가게 되고 코드의 응집력은 망가질 것입니다.
+
+<br/>
+
+쿠폰 도메인 객체 예시입니다.
+
+```java
+public class Coupon {
+
+    @Embedded
+    private CouponCode code;
+
+    @Column(name = "used", nullable = false)
+    private boolean used;
+
+    @Column(name = "discount", nullable = false)
+    private double discount;
+
+    @Column(name = "expiration_date", nullable = false, updatable = false)
+    private LocalDate expirationDate;
+
+    public boolean isExpired() {
+        return LocalDate.now().isAfter(expirationDate);
+    }
+
+    public void use() {
+        verifyExpiration();
+        verifyUsed();
+        this.used = true;
+    }
+
+    private void verifyUsed() {
+        if (used) throw new CouponAlreadyUseException();
+    }
+
+    private void verifyExpiration() {
+        if (LocalDate.now().isAfter(getExpirationDate())) throw new CouponExpireException();
+    }
+}
+```
+
+단순하게 getter, setter 메서드만 제공하지 않고, 쿠폰 도메인에 관한 비즈니스 로직이 응집되어 메서드로 표현되었습니다.  
 
 <br/><br/>
 
@@ -211,3 +314,5 @@ Domain Model 을 통해 외부랑 통신을 할 경우 내부 비즈니스 규�
 
 <br/>
 
+프로젝트 상황과 아키텍처을 고려하여 dto 진입 범위를 정하는것이 바람직할 것 같습니다.  
+(그렇다고 Repository 레이어까지 DTO 가 내려갈 일은 없게 해야 합니다)
