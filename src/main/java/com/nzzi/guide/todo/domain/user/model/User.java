@@ -26,6 +26,7 @@ public class User extends Auditable {
      * 암호화되서 저장됨 (필수)
      * 글자수: utf8 기준 / 영문 255자 / 한글 255자
      */
+    @Embedded
     @Column(name = "password", nullable = false, length = 255)
     private Password password;
 
