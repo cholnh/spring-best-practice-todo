@@ -73,9 +73,9 @@ public class Todo extends Auditable {
 
 <br/>
 
-- ~~`@DynamicUpdate`~~
+- ~~`@DynamicUpdate`~~  
     필드의 값 중 null 값을 갖는 필드를 update 쿼리에서 자동으로 제외하는 어노테이션입니다.  
-    (Dirty Checking 으로 엔티티 객체 변화를 감지 후 SQL 문을 생성합니다)
+    (Dirty Checking 으로 엔티티 객체 변화를 감지 후 SQL 문을 생성합니다)  
     즉, 실제 값이 변경된 필드만 변경되게 하는 기능이지만 성능 오버헤드(엔티티 상태 추적, SQL 캐시 사용 불가)가 있으므로 고려가 필요합니다.  
     필드가 많을 경우(정규화가 잘못돼 있을 확률이 높습니다) 또는 버전(`@Version`)을 사용하지 않는 엔티티의  
     Optimistic Lock (낙관적 락)을 사용하고자 할 경우 라면 `@DynamicUpdate` 를 사용하는 것이 좋습니다.  
