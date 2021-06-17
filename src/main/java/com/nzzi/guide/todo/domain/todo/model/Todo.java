@@ -13,7 +13,6 @@ import javax.persistence.*;
 /*
  * DynamicUpdate
  * null 필드를 update 쿼리에서 제외하는 어노테이션.
- * 또한 업데이트 동시성 문제를 해결.
  * 단점: 성능 오버헤드(엔티티 상태 추적)가 있으므로 고려 필요
  */
 @DynamicUpdate
