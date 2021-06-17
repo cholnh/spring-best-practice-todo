@@ -98,6 +98,82 @@ public class Todo extends Auditable {
     즉, 생성자 빌더 패턴 코드를 생성해주는 `@Builder` 어노테이션에 부모 클래스의 생성자 빌더 코드가 추가된 어노테이션입니다.  
     부모 클래스에도 `@SuperBuilder` 어노테이션이 달려있어야 합니다.
     
+<br/>
+
+- `@Lob`  
+    관계형 데이터베이스 에서 varchar 를 넘어서는 큰 내용을 넣고 싶을 경우 사용합니다.  
+    위 어노테이션 사용시 스프링이 추론하여 어떤 타입으로 저장할지를 판단하게 됩니다.  
+    String 과 char 를 기본으로 하는 타입(@Clob)을 제외한 나머지는 @Blob 으로 사용되게 됩니다.  
+    
+<br/>
+
+- `@Basic(fetch = FetchType.LAZY)`  
+    fetch 전략과 optional 을 명시하기위해 어노테이션을 사용합니다.  
+    (@Basic 의 경우 JPA Entities 에 적용되며, @Column 속성은 Databases 컬럼에 적용됩니다)  
+    fetch 전략의 경우 해당 컬럼을 가져오는 과정을 `eagerly fetched` 또는 `lazily fetched` 으로 설정하게 됩니다.  
+    `eagerly fetched` 의 경우 해당 필드 사용여부와 상관없이 객체에 로딩됩니다.  
+    `lazily fetched` 의 경우 해당 필드가 사용되는 시점에 객체에 로딩됩니다.
+
+<br/>
+
+상위 부모 클래스인 `Auditable` 클래스에 대해 알아보겠습니다.  
+해당 클래스는 감사 기능을 제공하는 공통 클래스입니다.  
+`생성일자`, `수정일자`, `활성화여부` 등 엔티티 전반에 공통으로 사용되는 컬럼을 자동으로 넣어주게 됩니다.
+
+```java
+@EntityListeners(value = AuditingEntityListener.class)
+@MappedSuperclass
+@Getter
+@SuperBuilder
+@NoArgsConstructor
+public abstract class Auditable implements Serializable {
+
+    @Column(name = "is_active", nullable = false, length = 1, columnDefinition = "VARCHAR(1) DEFAULT 'Y'")
+    @Convert(converter = BooleanToYNConverter.class)
+    private Boolean isActive;
+
+    @Column(name = "created_date", nullable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    private LocalDateTime createdDate;
+
+    @Column(name = "last_modified_date", nullable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @UpdateTimestamp
+    private LocalDateTime lastModifiedDate;
+}
+```
+
+- `@EntityListeners(value = AuditingEntityListener.class)`  
+    엔티티의 변경(영속/업데이트 시)을 감지하면 해당 Listener(`AuditingEntityListener.class`) 를 실행합니다.  
+    `AuditingEntityListener` 는 JPA 에서 제공하는 감사 기능을 제공하는 Listener 입니다.  
+    
+<br/>
+
+- `@MappedSuperClass`  
+    위 어노테이션을 사용하면 상속을 통해 엔티티에 해당 필드를 추가할 수 있습니다.  
+
+<br/>
+
+- `@CreationTimestamp`  
+    생성 시간을 자동 입력합니다.
+    
+<br/>
+
+- ` @UpdateTimestamp`  
+    수정 시간을 자동 입력합니다.
+    
+<br/>
+
+- `@Convert(converter = BooleanToYNConverter.class)`  
+    관계형 데이터베이스에는 boolean 타입이 저장되지 않습니다.  
+    따라서 `Y` 또는 `N` 문자열을 저장하여 논리연산자를 표현합니다.  
+    이때 변환하기 위해 사용되는 Converter 입니다.
+    
+<br/>
+
+- `columnDefinition`  
+    `@Column` 어노테이션 속성 중 하나인 `columnDefinition` 은 컬럼의 기본값을 지정해줍니다.  
+    `TIMESTAMP DEFAULT CURRENT_TIMESTAMP` 은 TIMESTAMP 기본값을 현재 시간으로 저장합니다.
+
 
 <br/><br/>
 
