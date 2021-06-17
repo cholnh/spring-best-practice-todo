@@ -3,13 +3,11 @@ package com.nzzi.guide.todo.domain.user.model;
 import com.nzzi.guide.todo.domain._base.Auditable;
 import com.nzzi.guide.todo.domain._base.Password;
 import lombok.*;
-import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user_tbl")
 @Getter
-@DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends Auditable {
 

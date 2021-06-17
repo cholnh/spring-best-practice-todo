@@ -3,19 +3,11 @@ package com.nzzi.guide.todo.domain.todo.model;
 import com.nzzi.guide.todo.domain._base.Auditable;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.DynamicUpdate;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "todo_tbl")
 @Getter
-/*
- * DynamicUpdate
- * null 필드를 update 쿼리에서 제외하는 어노테이션.
- * 단점: 성능 오버헤드(엔티티 상태 추적)가 있으므로 고려 필요
- */
-@DynamicUpdate
 /*
  * 접근지정자 PROTECTED 이유
  * 기본 생성자의 접근 제한자를 private 으로 걸면,
