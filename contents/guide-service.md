@@ -57,4 +57,43 @@
 
 ## 행위 기반의 서비스
 
+`Todo` 를 다루는 도메인의 서비스를 정의할 때 `TodoService` 라는 네이밍을 사용하는 것이 일반적입니다.  
+하지만 `Todo` 와 관련된 모든 비즈니스 로직이 일정한 기준없이 모이게 되고, 구현체 또한 복잡한 코드로 넘칠 것 입니다.  
 
+<br/>
+
+로버트 C. 마틴이 쓴 클린코드에서는 이런 말이 나옵니다.  
+
+> 도구 상자를 어떻게 관리하고 싶은가?  
+> 작은 서랍을 많이 두고 기능과 이름이 명확한 컴포넌트를 나눠 담고 싶은가?  
+> 아니면 큰 서랍 몇 개를 두고 모두를 던져 넣고 싶은가?
+
+<br/>
+
+큰 클래스 보다는 작은 여러 클래스로 나누어진 시스템이 더 바람직하며,  
+작은 클래스는 단일 책임 원칙(SRP; Single Responsibility Principle)을 준수해야 한다는 이야기 입니다.
+
+<br/>
+
+그렇다면 `TodoService` 보다는 목적(행위)에 맞게 네이밍을 하면 어떨까요.  
+조회 목적을 갖는 서비스는 `TodoFindService` 라는 네이밍을 통해 조회의 책임을 갖는 객체라는 것을 알릴 수 있습니다.  
+객체를 행위 기반으로 바라보고 네이밍을하여 자연스럽게 책임을 부려하는 것이 바람직합니다.  
+
+<br/>
+
+```java
+public interface TodoQueryService {
+    TodoResponse findTodo(Long id);
+    Page<TodoResponse> findTodos(Pageable pageable);
+    Page<TodoResponse> searchByContents(TodoPredicate predicate, Pageable pageable);
+}
+```
+
+```java
+public interface TodoCommandService {
+    TodoResponse create(TodoRequest request);
+    TodoResponse update(Long id, TodoRequest request);
+    TodoResponse delete(Long id);
+}
+
+```
