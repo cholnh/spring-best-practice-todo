@@ -133,10 +133,10 @@ class TodoQueryServiceImplTest {
             final String expectedSearchContents = "내용";
 
             // when
-            Page<TodoResponse> actualPageSearchedTitle = todoQueryService.searchByContents(
+            Page<TodoResponse> actualPageSearchedTitle = todoQueryService.search(
                     TodoPredicate.of("title=" + expectedSearchTitle),
                     Pageable.unpaged());
-            Page<TodoResponse> actualPageSearchedContents = todoQueryService.searchByContents(
+            Page<TodoResponse> actualPageSearchedContents = todoQueryService.search(
                     TodoPredicate.of("contents=" + expectedSearchContents),
                     Pageable.unpaged());
 

@@ -30,8 +30,8 @@ public class TodoQueryServiceImpl implements TodoQueryService {
     }
 
     @Override
-    public Page<TodoResponse> searchByContents(TodoPredicate predicate, Pageable pageable) {
-        Page<Todo> todos = todoRepository.searchByContents(predicate, pageable);
+    public Page<TodoResponse> search(TodoPredicate predicate, Pageable pageable) {
+        Page<Todo> todos = todoRepository.search(predicate, pageable);
         return todos.map(TodoResponse::of);
     }
 

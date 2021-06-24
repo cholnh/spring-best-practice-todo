@@ -6,5 +6,5 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface TodoSupportRepository {
-    Page<Todo> searchByContents(TodoPredicate predicate, Pageable pageable);
+    Page<Todo> search(TodoPredicate predicate, Pageable pageable);
 }

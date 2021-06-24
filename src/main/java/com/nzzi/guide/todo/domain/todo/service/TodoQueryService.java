@@ -8,5 +8,5 @@ import org.springframework.data.domain.Pageable;
 public interface TodoQueryService {
     TodoResponse findTodo(Long id);
     Page<TodoResponse> findTodos(Pageable pageable);
-    Page<TodoResponse> searchByContents(TodoPredicate predicate, Pageable pageable);
+    Page<TodoResponse> search(TodoPredicate predicate, Pageable pageable);
 }

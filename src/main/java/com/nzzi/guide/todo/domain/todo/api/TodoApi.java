@@ -46,7 +46,7 @@ public class TodoApi {
     ) {
         CollectionModel<TodoResponse> resources = CollectionModel.of(query == null
             ? todoQueryService.findTodos(pageable)
-            : todoQueryService.searchByContents(TodoPredicate.of(query), pageable));
+            : todoQueryService.search(TodoPredicate.of(query), pageable));
 
         resources.add(linkTo(methodOn(TodoApi.class).findGroup(query, pageable)).withSelfRel());
         return ResponseEntity.ok(resources);

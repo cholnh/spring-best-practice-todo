@@ -19,7 +19,7 @@ public class TodoSupportRepositoryImpl extends QuerydslRepositorySupport impleme
     }
 
     @Override
-    public Page<Todo> searchByContents(TodoPredicate predicate, Pageable pageable) {
+    public Page<Todo> search(TodoPredicate predicate, Pageable pageable) {
 
         final QTodo qTodo = QTodo.todo;
 
