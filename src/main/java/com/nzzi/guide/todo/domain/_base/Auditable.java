@@ -29,7 +29,7 @@ public abstract class Auditable implements Serializable {
      */
     @Column(name = "is_active", nullable = false, length = 1, columnDefinition = "VARCHAR(1) DEFAULT 'Y'")
     @Convert(converter = BooleanToYNConverter.class)
-    private Boolean isActive;
+    private Boolean isActive = true;
 
     /**
      * 등록 날짜
