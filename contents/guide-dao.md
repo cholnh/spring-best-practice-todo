@@ -109,6 +109,41 @@ data:
     
     <br/>
     
-    Q도메인(QueryDSL 전용 객체)을 이용하여 쿼리문을 작성합니다.  
+    구현체는 `QuerydslRepositorySupport` 를 상속받아야 하며 클래스명은 인터페이스 이름 + `Impl` 로 작성해야 합니다.  
+    또한 super 생성자에 도메인 클래스를 인자로 넘겨줘야 합니다.  
+    
+    ```java
+    public class TodoSupportRepositoryImpl extends QuerydslRepositorySupport implements TodoSupportRepository {
+        
+        public TodoSupportRepositoryImpl() {
+            super(Todo.class);
+        }
+    }
+    ```
+    
+    <br/>
+    
+    Q도메인(QueryDSL 전용 객체)을 이용하여 메서드 체이닝 방식으로 쿼리문을 작성합니다.  
     `QuerydslRepositorySupport` 에서 제공하는 기본 쿼리 메서드(`from` 과 같은 이니셜라이저 메서드)를 사용합니다.  
     
+    <br/>
+    
+    `QuerydslRepositorySupport` 기본 쿼리 메서드는 기존 쿼리(Select 로 시작하는)와는 다르게 `from` 으로 시작합니다.  
+    가독성 좋게 `select` 로 시작하는 체이닝 메서드를 사용하고 싶으시면, 다음과 같은 `JPAQueryFactory` 빈을 만듭니다.  
+    
+    ```java
+    @Configuration
+    public class QuerydslConfiguration {
+    
+        @PersistenceContext
+        private EntityManager entityManager;
+    
+        @Bean
+        public JPAQueryFactory jpaQueryFactory() {
+            return new JPAQueryFactory(entityManager);
+        }
+    }
+    ```
+    
+    `JPAQueryFactory` 에서는 `select` 또는 `selectFrom` 과 같은 메서드를 제공합니다.  
+    구현 클래스에 해당 빈을 주입받아 사용하면 됩니다.
