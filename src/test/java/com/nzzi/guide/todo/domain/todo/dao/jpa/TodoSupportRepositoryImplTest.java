@@ -1,11 +1,11 @@
 package com.nzzi.guide.todo.domain.todo.dao.jpa;
 
+import com.nzzi.guide.todo._base.RepositoryTest;
 import com.nzzi.guide.todo.domain.todo.dto.TodoPredicate;
 import com.nzzi.guide.todo.domain.todo.dto.TodoRequest;
 import com.nzzi.guide.todo.domain.todo.model.Todo;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -13,11 +13,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-public class TodoSupportRepositoryImplTest {
+public class TodoSupportRepositoryImplTest extends RepositoryTest {
 
     @Autowired
     private TodoRepository todoRepository;
+
+    private Todo savedTodo;
+
+    @BeforeEach
+    void setUp() {
+        final String dummyTitle = "타이틀";
+        final String dummyContents = "테스트 콘텐츠";
+
+        Todo todo = TodoRequest.of(dummyTitle, dummyContents).toEntity();
+        savedTodo = todoRepository.save(todo);
+    }
 
     @Test
     @DisplayName("Todo 정보를 데이터베이스에 정상적으로 저장한다.")
@@ -26,13 +36,9 @@ public class TodoSupportRepositoryImplTest {
     public void save_todo_success() {
 
         // given
-        final Long expectedId;
-        Todo expectedTodoEntity = dummyTodo();
+        final Long expectedId = savedTodo.getIdx();
 
         // when
-        Todo returnedTodoEntity = todoRepository
-                .save(expectedTodoEntity);
-        expectedId = returnedTodoEntity.getIdx();
         Todo actualTodoEntity = todoRepository.getOne(expectedId);
 
         // then
@@ -42,12 +48,8 @@ public class TodoSupportRepositoryImplTest {
         assertTrue(actualTodoEntity.getIsActive());
 
         assertEquals(expectedId, actualTodoEntity.getIdx());
-        assertEquals(expectedTodoEntity.getTitle(), actualTodoEntity.getTitle());
-        assertEquals(expectedTodoEntity.getContents(), actualTodoEntity.getContents());
-
-        assertEquals(expectedId, returnedTodoEntity.getIdx());
-        assertEquals(expectedTodoEntity.getTitle(), returnedTodoEntity.getTitle());
-        assertEquals(expectedTodoEntity.getContents(), returnedTodoEntity.getContents());
+        assertEquals(savedTodo.getTitle(), actualTodoEntity.getTitle());
+        assertEquals(savedTodo.getContents(), actualTodoEntity.getContents());
     }
 
     @Test
@@ -57,21 +59,25 @@ public class TodoSupportRepositoryImplTest {
     public void search_by_contents_success() {
 
         // given
-        Todo expectedTodoEntity = dummyTodo();
-        final Long expectedId = todoRepository.save(expectedTodoEntity)
-                .getIdx();
+        final Long expectedId = savedTodo.getIdx();
+        final String expectedContents = savedTodo.getContents();
 
         TodoPredicate todoPredicate = TodoPredicate.builder()
-                .contents(expectedTodoEntity.getContents())
+                .contents(expectedContents)
                 .build();
 
         // when
         Page<Todo> actualSearchedPage = todoRepository
                 .search(todoPredicate, defaultPageRequest());
 
+        System.out.println(actualSearchedPage.getContent().get(0).getIdx());
+
         // then
         assertFalse(actualSearchedPage.isEmpty());
-        assertFalse(actualSearchedPage.filter(todo -> todo.getIdx().equals(expectedId)).isEmpty());
+        assertFalse(actualSearchedPage.filter(
+                todo -> todo.getIdx().equals(expectedId) &&
+                        todo.getContents().equals(expectedContents)
+        ).isEmpty());
     }
 
     private PageRequest defaultPageRequest() {
@@ -81,12 +87,5 @@ public class TodoSupportRepositoryImplTest {
         final String defaultProperty = "idx";
         return PageRequest.of(defaultPage, defaultSize,
                 Sort.by(defaultDirection, defaultProperty));
-    }
-
-    private Todo dummyTodo() {
-        final String dummyTitle = "타이틀";
-        final String dummyContents = "테스트 콘텐츠";
-
-        return TodoRequest.of(dummyTitle, dummyContents).toEntity();
     }
 }
