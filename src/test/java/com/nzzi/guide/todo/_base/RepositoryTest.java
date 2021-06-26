@@ -1,6 +1,7 @@
 package com.nzzi.guide.todo._base;
 
 import com.nzzi.guide.todo.global.configuration.database.DataSourceConfiguration;
+import org.junit.jupiter.api.Disabled;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
@@ -22,5 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 // @DataJpaTest 내부에 @Transactional 이 설정되어 있어 기본적인 트랜젝션을 제공하지만,
 // 트랜젝션 기능이 필요하지 않을 경우 Propagation.NOT_SUPPORTED 를 설정합니다.
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
+
+// 실제로 동작할 필요가 없으니 해당 어노테이션 추가
+@Disabled
 public class RepositoryTest {
 }
