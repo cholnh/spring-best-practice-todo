@@ -6,11 +6,10 @@ public class TodoBuilder {
 
     public static Todo mock() {
 
-        final Long id = 2L;
         final String title = "타이틀";
         final String contents = "테스트 콘텐츠";
 
-        return build(id, title, contents);
+        return build(null, title, contents);
     }
 
     public static Todo build(String title, String contents) {

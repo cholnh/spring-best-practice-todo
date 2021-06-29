@@ -45,13 +45,14 @@ class TodoQueryServiceImplTest {
         void find_todo_success() {
 
             // given (해당 테스트는 mock 사용할 필요 없지만 예시를 위해 사용)
+            final Long id = 1L;
             final Todo savedTodo = TodoBuilder.mock();
-            given(mockTodoRepository.findById(savedTodo.getIdx()))
+            given(mockTodoRepository.findById(id))
                     .willReturn(Optional.ofNullable(savedTodo));
 
             // when
             TodoResponse actualTodoResponse = todoQueryServiceWithMock
-                    .findTodo(savedTodo.getIdx());
+                    .findTodo(id);
 
             // then
             assertNotNull(actualTodoResponse.getCreatedDate());
@@ -59,7 +60,6 @@ class TodoQueryServiceImplTest {
             assertNotNull(actualTodoResponse.getIdx());
             assertNotNull(actualTodoResponse.getTitle());
             assertNotNull(actualTodoResponse.getContents());
-            assertEquals(savedTodo.getIdx(), actualTodoResponse.getIdx());
         }
 
         @Test
