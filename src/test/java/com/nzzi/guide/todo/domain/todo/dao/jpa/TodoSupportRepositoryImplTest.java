@@ -1,14 +1,16 @@
 package com.nzzi.guide.todo.domain.todo.dao.jpa;
 
 import com.nzzi.guide.todo._base.RepositoryTest;
+import com.nzzi.guide.todo.domain._bases.PageRequestBuilder;
 import com.nzzi.guide.todo.domain.todo.dto.TodoPredicate;
 import com.nzzi.guide.todo.domain.todo.dto.TodoRequest;
 import com.nzzi.guide.todo.domain.todo.model.Todo;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -68,7 +70,7 @@ public class TodoSupportRepositoryImplTest extends RepositoryTest {
 
         // when
         Page<Todo> actualSearchedPage = todoRepository
-                .search(todoPredicate, defaultPageRequest());
+                .search(todoPredicate, PageRequestBuilder.build());
 
         System.out.println(actualSearchedPage.getContent().get(0).getIdx());
 
@@ -78,14 +80,5 @@ public class TodoSupportRepositoryImplTest extends RepositoryTest {
                 todo -> todo.getIdx().equals(expectedId) &&
                         todo.getContents().equals(expectedContents)
         ).isEmpty());
-    }
-
-    private PageRequest defaultPageRequest() {
-        final int defaultPage = 0;
-        final int defaultSize = 10;
-        final Sort.Direction defaultDirection = Sort.Direction.DESC;
-        final String defaultProperty = "idx";
-        return PageRequest.of(defaultPage, defaultSize,
-                Sort.by(defaultDirection, defaultProperty));
     }
 }
