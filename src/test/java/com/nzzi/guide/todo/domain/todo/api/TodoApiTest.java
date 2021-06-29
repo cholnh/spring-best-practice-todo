@@ -20,10 +20,10 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -242,17 +242,20 @@ class TodoApiTest extends IntegrationTest {
         void update_success() throws Exception {
 
             // given
-            final Todo savedTodo = todoRepository.saveAndFlush(TodoBuilder.build("title", "contents"));
-            final TodoRequest dto = TodoRequestBuilder.build("updated title", "updated contents");
+            final Todo savedTodo = todoRepository.save(TodoBuilder.build("title", "contents"));
+            final TodoRequest dto = TodoRequestBuilder.build("title to be updated", "contents to be updated");
 
             // when
             final ResultActions resultActions = requestUpdateTodo(savedTodo.getIdx(), dto);
-            final Todo updatedTodo = todoRepository.getOne(savedTodo.getIdx());
 
             // then
             resultActions
                     .andExpect(status().isAccepted())
                     .andExpect(header().exists(HttpHeaders.LOCATION));
+
+            final Optional<Todo> optional = todoRepository.findById(savedTodo.getIdx());
+            assertTrue(optional.isPresent());
+            final Todo updatedTodo = optional.get();
             assertEquals(dto.getTitle(), updatedTodo.getTitle());
             assertEquals(dto.getContents(), updatedTodo.getContents());
         }
@@ -273,9 +276,42 @@ class TodoApiTest extends IntegrationTest {
         }
     }
 
-    @Test
-    @DisplayName("id에 해당하는 Todo 정보를 정상적으로 삭제한다.")
-    void delete() {
+    @Nested
+    @DisplayName("Todo 수정 테스트")
+    class delete {
+        @Test
+        @WithMockUser(roles="USER")
+        @DisplayName("id에 해당하는 Todo 정보를 정상적으로 삭제한다.")
+        void delete_success() throws Exception {
+
+            // given
+            final Todo savedTodo = todoRepository.save(TodoBuilder.build("title to be deleted", "contents to be deleted"));
+
+            // when
+            final ResultActions resultActions = requestDeleteTodo(savedTodo.getIdx());
+
+            // then
+            resultActions
+                    .andExpect(status().isNoContent());
+
+            final Optional<Todo> optional = todoRepository.findById(savedTodo.getIdx());
+            assertFalse(optional.isPresent());
+        }
+
+        @Test
+        @DisplayName("OAuth 권한이 없으면 Todo 정보 삭제가 거부된다.")
+        void delete_unauthorized() throws Exception {
+
+            // given
+            final Long dummyId = 1L;
+
+            // when
+            final ResultActions resultActions = requestDeleteTodo(dummyId);
+
+            // then
+            resultActions
+                    .andExpect(status().isUnauthorized());
+        }
     }
 
     private String dateFormat(LocalDateTime localDateTime) {
@@ -316,6 +352,11 @@ class TodoApiTest extends IntegrationTest {
         return mvc.perform(put("/todos/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(dto)))
+                .andDo(print());
+    }
+
+    private ResultActions requestDeleteTodo(Long id) throws Exception {
+        return mvc.perform(delete("/todos/{id}", id))
                 .andDo(print());
     }
 }
