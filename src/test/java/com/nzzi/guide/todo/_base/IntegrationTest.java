@@ -1,5 +1,6 @@
 package com.nzzi.guide.todo._base;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nzzi.guide.todo.TodoApplication;
 import org.junit.jupiter.api.Disabled;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +34,7 @@ public class IntegrationTest {
     // MockMVC 클라이언트 테스트 사용을 위한
     @Autowired
     protected MockMvc mvc;
+
+    @Autowired
+    protected ObjectMapper objectMapper;
 }
