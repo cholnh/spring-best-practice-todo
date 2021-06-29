@@ -5,6 +5,7 @@ import com.nzzi.guide.todo.domain.todo.dto.TodoPredicate;
 import com.nzzi.guide.todo.domain.todo.dto.TodoResponse;
 import com.nzzi.guide.todo.domain.todo.exception.TodoNotFoundException;
 import com.nzzi.guide.todo.domain.todo.model.Todo;
+import com.nzzi.guide.todo.domain.todo.model.TodoBuilder;
 import com.nzzi.guide.todo.domain.todo.service.TodoQueryService;
 import com.nzzi.guide.todo.global.error.exception.ErrorCode;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +20,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,16 +45,13 @@ class TodoQueryServiceImplTest {
         void find_todo_success() {
 
             // given (해당 테스트는 mock 사용할 필요 없지만 예시를 위해 사용)
-            final Long expectedId = 1L;
-            given(mockTodoRepository.findById(expectedId))
-                    .willReturn(Optional.ofNullable(mockEntity(
-                            expectedId,
-                            "타이틀",
-                            "콘텐츠")));
+            final Todo savedTodo = TodoBuilder.mock();
+            given(mockTodoRepository.findById(savedTodo.getIdx()))
+                    .willReturn(Optional.ofNullable(savedTodo));
 
             // when
             TodoResponse actualTodoResponse = todoQueryServiceWithMock
-                    .findTodo(expectedId);
+                    .findTodo(savedTodo.getIdx());
 
             // then
             assertNotNull(actualTodoResponse.getCreatedDate());
@@ -62,7 +59,7 @@ class TodoQueryServiceImplTest {
             assertNotNull(actualTodoResponse.getIdx());
             assertNotNull(actualTodoResponse.getTitle());
             assertNotNull(actualTodoResponse.getContents());
-            assertEquals(expectedId, actualTodoResponse.getIdx());
+            assertEquals(savedTodo.getIdx(), actualTodoResponse.getIdx());
         }
 
         @Test
@@ -157,17 +154,6 @@ class TodoQueryServiceImplTest {
                 assertNotNull(actualTodo.getContents());
                 assertTrue(actualTodo.getContents().contains(expectedSearchContents));
             });
-        }
-
-        private Todo mockEntity(Long id, String title, String contents) {
-            return Todo.builder()
-                    .isActive(true)
-                    .createdDate(LocalDateTime.now())
-                    .lastModifiedDate(LocalDateTime.now())
-                    .idx(id)
-                    .title(title)
-                    .contents(contents)
-                    .build();
         }
     }
 }
