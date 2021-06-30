@@ -9,10 +9,10 @@ import com.nzzi.guide.todo.domain.todo.model.Todo;
 import com.nzzi.guide.todo.domain.todo.model.TodoBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -38,287 +38,177 @@ class TodoApiTest extends IntegrationTest {
         todoRepository.deleteAll();
     }
 
-    @Nested
-    @DisplayName("Todo 반환 테스트")
-    class findOne {
-        @Test
-        @WithMockUser(roles="USER")
-        @DisplayName("USER 권한은 Todo 정보를 정상적으로 반환한다.")
-        void findOne_success_by_user() throws Exception {
+    @Test
+    @WithMockUser(roles="USER")
+    @DisplayName("id에 해당하는 Todo 정보를 정상적으로 반환한다.")
+    void findById_shouldSucceed() throws Exception {
 
-            // given
-            final Todo savedTodo = todoRepository.save(TodoBuilder.mock());
+        // given
+        final Todo savedTodo = todoRepository.save(TodoBuilder.mock());
 
-            // when
-            final ResultActions resultActions = requestFindOneTodo(savedTodo.getIdx());
+        // when
+        final ResultActions resultActions = requestFindByIdTodo(savedTodo.getIdx());
 
-            // then
-            resultActions
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("createdDate").value(dateFormat(savedTodo.getCreatedDate())))
-                    .andExpect(jsonPath("lastModifiedDate").value(dateFormat(savedTodo.getLastModifiedDate())))
-                    .andExpect(jsonPath("active").value(savedTodo.getIsActive()))
-                    .andExpect(jsonPath("idx").value(savedTodo.getIdx()))
-                    .andExpect(jsonPath("title").value(savedTodo.getTitle()))
-                    .andExpect(jsonPath("contents").value(savedTodo.getContents()));
-        }
-
-        @Test
-        @DisplayName("OAuth 권한이 없으면 Todo 정보 반환이 거부된다.")
-        void findOne_unauthorized() throws Exception {
-
-            // given
-            final Long dummyId = 1L;
-
-            // when
-            final ResultActions resultActions = requestFindOneTodo(dummyId);
-
-            // then
-            resultActions
-                    .andExpect(status().isUnauthorized());
-        }
+        // then
+        resultActions
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("createdDate").value(dateFormat(savedTodo.getCreatedDate())))
+                .andExpect(jsonPath("lastModifiedDate").value(dateFormat(savedTodo.getLastModifiedDate())))
+                .andExpect(jsonPath("active").value(savedTodo.getIsActive()))
+                .andExpect(jsonPath("idx").value(savedTodo.getIdx()))
+                .andExpect(jsonPath("title").value(savedTodo.getTitle()))
+                .andExpect(jsonPath("contents").value(savedTodo.getContents()));
     }
 
-    @Nested
-    @DisplayName("Todo 리스트 반환 테스트")
-    class findAll {
-        @Test
-        @WithMockUser(roles="USER")
-        @DisplayName("USER 권한은 Todo 리스트를 페이지화 하여 정상적으로 반환한다.")
-        void findAll_success_by_user() throws Exception {
+    @Test
+    @WithMockUser(roles="USER")
+    @DisplayName("모든 Todo 리스트를 페이지화 하여 정상적으로 반환한다.")
+    void findAll_shouldSucceed() throws Exception {
 
-            // given
-            final PageRequest page = PageRequestBuilder.build();
-            final int mockEntityCount = 5;
-            for (int i = 0; i < mockEntityCount; i++) {
-                Todo todo = todoRepository.save(TodoBuilder.mock());
-                System.out.println(todo.getIdx());
-            }
-
-            // when
-            final ResultActions resultActions = requestFindAllTodo(page);
-
-            // then
-            resultActions
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$._embedded.todoResponses").exists())
-                    .andExpect(jsonPath("$._embedded.todoResponses").isArray())
-                    .andExpect(jsonPath("$._embedded.todoResponses", hasSize(mockEntityCount)));
+        // given
+        final PageRequest page = PageRequestBuilder.build();
+        final int mockEntityCount = 5;
+        for (int i = 0; i < mockEntityCount; i++) {
+            Todo todo = todoRepository.save(TodoBuilder.mock());
+            System.out.println(todo.getIdx());
         }
 
-        @Test
-        @DisplayName("OAuth 권한이 없으면 Todo 정보 반환이 거부된다.")
-        void findAll_unauthorized() throws Exception {
+        // when
+        final ResultActions resultActions = requestFindAllTodo(page);
 
-            // given
-            final PageRequest page = PageRequestBuilder.build();
-
-            // when
-            final ResultActions resultActions = requestFindAllTodo(page);
-
-            // then
-            resultActions
-                    .andExpect(status().isUnauthorized());
-        }
+        // then
+        resultActions
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$._embedded.todoResponses").exists())
+                .andExpect(jsonPath("$._embedded.todoResponses").isArray())
+                .andExpect(jsonPath("$._embedded.todoResponses", hasSize(mockEntityCount)));
     }
 
-    @Nested
-    @DisplayName("Todo 검색 테스트")
-    class findGroup {
-        @Test
-        @WithMockUser(roles="USER")
-        @DisplayName("USER 권한은 query 조건문(단일조건)에 일치하는 Todo 를 찾아 정상적으로 반환한다.")
-        void findGroup_success_1() throws Exception {
+    @Test
+    @WithMockUser(roles="USER")
+    @DisplayName("query 조건문(단일조건)에 일치하는 Todo 를 찾아 정상적으로 반환한다.")
+    void searchWithSingleQuery_shouldSucceed() throws Exception {
 
-            // given
-            final Todo savedTodo = todoRepository.save(TodoBuilder.mock());
-            final String query = "contents=" + savedTodo.getContents();
-            final PageRequest page = PageRequestBuilder.build();
+        // given
+        final Todo savedTodo = todoRepository.save(TodoBuilder.mock());
+        final String query = "contents=" + savedTodo.getContents();
+        final PageRequest page = PageRequestBuilder.build();
 
-            // when
-            final ResultActions resultActions = requestFindGroupTodo(query, page);
+        // when
+        final ResultActions resultActions = requestSearchTodo(query, page);
 
-            // then
-            resultActions
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$._embedded.todoResponses").exists())
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].createdDate").value(dateFormat(savedTodo.getCreatedDate())))
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].lastModifiedDate").value(dateFormat(savedTodo.getLastModifiedDate())))
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].active").value(savedTodo.getIsActive()))
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].idx").value(savedTodo.getIdx()))
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].title").value(savedTodo.getTitle()))
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].contents").value(savedTodo.getContents()))
-                    .andDo(print());
-        }
-
-        @Test
-        @WithMockUser(roles="USER")
-        @DisplayName("USER 권한은 query 조건문(복수조건)에 일치하는 Todo 를 찾아 정상적으로 반환한다.")
-        void findGroup_success_2() throws Exception {
-
-            // given
-            final String savedTodoTitle = "오늘 할 일 목록";
-            final String savedTodoContents = "책 읽기, 운동하기, 카페가기";
-            final Todo savedTodo = todoRepository.save(TodoBuilder.build(savedTodoTitle, savedTodoContents));
-
-            final String query = "title=오늘, contents=코딩";
-            final PageRequest page = PageRequestBuilder.build();
-
-            // when
-            final ResultActions resultActions = requestFindGroupTodo(query, page);
-
-            // then
-            resultActions
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$._embedded.todoResponses").exists())
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].createdDate").value(dateFormat(savedTodo.getCreatedDate())))
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].lastModifiedDate").value(dateFormat(savedTodo.getLastModifiedDate())))
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].active").value(savedTodo.getIsActive()))
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].idx").value(savedTodo.getIdx()))
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].title").value(savedTodo.getTitle()))
-                    .andExpect(jsonPath("$._embedded.todoResponses[0].contents").value(savedTodo.getContents()))
-                    .andDo(print());
-        }
-
-        @Test
-        @DisplayName("OAuth 권한이 없으면 Todo 정보 검색이 거부된다.")
-        void findGroup_unauthorized() throws Exception {
-
-            // given
-            final String dummyQuery = "";
-            final PageRequest dummyPage = PageRequestBuilder.build();
-
-            // when
-            final ResultActions resultActions = requestFindGroupTodo(dummyQuery, dummyPage);
-
-            // then
-            resultActions
-                    .andExpect(status().isUnauthorized());
-        }
+        // then
+        resultActions
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$._embedded.todoResponses").exists())
+                .andExpect(jsonPath("$._embedded.todoResponses[0].createdDate").value(dateFormat(savedTodo.getCreatedDate())))
+                .andExpect(jsonPath("$._embedded.todoResponses[0].lastModifiedDate").value(dateFormat(savedTodo.getLastModifiedDate())))
+                .andExpect(jsonPath("$._embedded.todoResponses[0].active").value(savedTodo.getIsActive()))
+                .andExpect(jsonPath("$._embedded.todoResponses[0].idx").value(savedTodo.getIdx()))
+                .andExpect(jsonPath("$._embedded.todoResponses[0].title").value(savedTodo.getTitle()))
+                .andExpect(jsonPath("$._embedded.todoResponses[0].contents").value(savedTodo.getContents()))
+                .andDo(print());
     }
 
-    @Nested
-    @DisplayName("Todo 생성 테스트")
-    class create {
-        @Test
-        @WithMockUser(roles="USER")
-        @DisplayName("USER 권한은 Todo 정보를 정상적으로 생성한다.")
-        void create_success() throws Exception {
+    @Test
+    @WithMockUser(roles="USER")
+    @DisplayName("query 조건문(복수조건)에 일치하는 Todo 를 찾아 정상적으로 반환한다.")
+    void searchWithMultipleQuery_shouldSucceed() throws Exception {
 
-            // given
-            final TodoRequest dto = TodoRequestBuilder.mock();
+        // given
+        final Todo expectedTodo1 = todoRepository.save(TodoBuilder.build(
+                "오늘 할 일",
+                "책 읽기"));
+        final Todo expectedTodo2 = todoRepository.save(TodoBuilder.build(
+                "내일 할 일 목록",
+                "코딩하기"));
+        final Todo unexpectedTodo = todoRepository.save(TodoBuilder.build(
+                "모레 할 일",
+                "쇼핑하기"));
 
-            // when
-            final ResultActions resultActions = requestCreateTodo(dto);
+        final String query = "title=오늘, contents=코딩";
+        final PageRequest page = PageRequest.of(0, 10,
+                Sort.by(Sort.Direction.ASC, "idx"));
 
-            // then
-            resultActions
-                    .andExpect(status().isCreated())
-                    .andExpect(header().exists(HttpHeaders.LOCATION));
-        }
+        // when
+        final ResultActions resultActions = requestSearchTodo(query, page);
 
-        @Test
-        @DisplayName("OAuth 권한이 없으면 Todo 정보 생성이 거부된다.")
-        void create_unauthorized() throws Exception {
 
-            // given
-            final TodoRequest dto = TodoRequestBuilder.mock();
-
-            // when
-            final ResultActions resultActions = requestCreateTodo(dto);
-
-            // then
-            resultActions
-                    .andExpect(status().isUnauthorized());
-        }
+        // then
+        resultActions
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$._embedded.todoResponses").exists())
+                .andExpect(jsonPath("$._embedded.todoResponses", hasSize(2)))
+                .andExpect(jsonPath("$._embedded.todoResponses[0].idx").value(expectedTodo1.getIdx()))
+                .andExpect(jsonPath("$._embedded.todoResponses[1].idx").value(expectedTodo2.getIdx()))
+                .andDo(print());
     }
 
-    @Nested
-    @DisplayName("Todo 수정 테스트")
-    class update {
-        @Test
-        @WithMockUser(roles="USER")
-        @DisplayName("USER 권한은 id에 해당하는 Todo 정보를 정상적으로 수정한다.")
-        void update_success() throws Exception {
+    @Test
+    @WithMockUser(roles="USER")
+    @DisplayName("Todo 정보를 정상적으로 생성한다.")
+    void create_shouldSucceed() throws Exception {
 
-            // given
-            final Todo savedTodo = todoRepository.save(TodoBuilder.build("title", "contents"));
-            final TodoRequest dto = TodoRequestBuilder.build("title to be updated", "contents to be updated");
+        // given
+        final TodoRequest dto = TodoRequestBuilder.mock();
 
-            // when
-            final ResultActions resultActions = requestUpdateTodo(savedTodo.getIdx(), dto);
+        // when
+        final ResultActions resultActions = requestCreateTodo(dto);
 
-            // then
-            resultActions
-                    .andExpect(status().isAccepted())
-                    .andExpect(header().exists(HttpHeaders.LOCATION));
-
-            final Optional<Todo> optional = todoRepository.findById(savedTodo.getIdx());
-            assertTrue(optional.isPresent());
-            final Todo updatedTodo = optional.get();
-            assertEquals(dto.getTitle(), updatedTodo.getTitle());
-            assertEquals(dto.getContents(), updatedTodo.getContents());
-        }
-
-        @Test
-        @DisplayName("OAuth 권한이 없으면 Todo 정보 수정이 거부된다.")
-        void update_unauthorized() throws Exception {
-
-            // given
-            final TodoRequest dto = TodoRequestBuilder.mock();
-
-            // when
-            final ResultActions resultActions = requestUpdateTodo(1L, dto);
-
-            // then
-            resultActions
-                    .andExpect(status().isUnauthorized());
-        }
+        // then
+        resultActions
+                .andExpect(status().isCreated())
+                .andExpect(header().exists(HttpHeaders.LOCATION));
     }
 
-    @Nested
-    @DisplayName("Todo 수정 테스트")
-    class delete {
-        @Test
-        @WithMockUser(roles="USER")
-        @DisplayName("id에 해당하는 Todo 정보를 정상적으로 삭제한다.")
-        void delete_success() throws Exception {
+    @Test
+    @WithMockUser(roles="USER")
+    @DisplayName("id에 해당하는 Todo 정보를 정상적으로 수정한다.")
+    void update_shouldSucceed() throws Exception {
 
-            // given
-            final Todo savedTodo = todoRepository.save(TodoBuilder.build("title to be deleted", "contents to be deleted"));
+        // given
+        final Todo savedTodo = todoRepository.save(TodoBuilder.build("title", "contents"));
+        final TodoRequest dto = TodoRequestBuilder.build("title to be updated", "contents to be updated");
 
-            // when
-            final ResultActions resultActions = requestDeleteTodo(savedTodo.getIdx());
+        // when
+        final ResultActions resultActions = requestUpdateTodo(savedTodo.getIdx(), dto);
 
-            // then
-            resultActions
-                    .andExpect(status().isNoContent());
+        // then
+        resultActions
+                .andExpect(status().isOk())
+                .andExpect(header().exists(HttpHeaders.LOCATION));
 
-            final Optional<Todo> optional = todoRepository.findById(savedTodo.getIdx());
-            assertFalse(optional.isPresent());
-        }
+        final Optional<Todo> optional = todoRepository.findById(savedTodo.getIdx());
+        assertTrue(optional.isPresent());
+        final Todo updatedTodo = optional.get();
+        assertEquals(dto.getTitle(), updatedTodo.getTitle());
+        assertEquals(dto.getContents(), updatedTodo.getContents());
+    }
 
-        @Test
-        @DisplayName("OAuth 권한이 없으면 Todo 정보 삭제가 거부된다.")
-        void delete_unauthorized() throws Exception {
+    @Test
+    @WithMockUser(roles="USER")
+    @DisplayName("id에 해당하는 Todo 정보를 정상적으로 삭제한다.")
+    void delete_shouldSucceed() throws Exception {
 
-            // given
-            final Long dummyId = 1L;
+        // given
+        final Todo savedTodo = todoRepository.save(TodoBuilder.build("title to be deleted", "contents to be deleted"));
 
-            // when
-            final ResultActions resultActions = requestDeleteTodo(dummyId);
+        // when
+        final ResultActions resultActions = requestDeleteTodo(savedTodo.getIdx());
 
-            // then
-            resultActions
-                    .andExpect(status().isUnauthorized());
-        }
+        // then
+        resultActions
+                .andExpect(status().isNoContent());
+
+        final Optional<Todo> optional = todoRepository.findById(savedTodo.getIdx());
+        assertFalse(optional.isPresent());
     }
 
     private String dateFormat(LocalDateTime localDateTime) {
         return localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
-    private ResultActions requestFindOneTodo(Long id) throws Exception {
+    private ResultActions requestFindByIdTodo(Long id) throws Exception {
         return  mvc.perform(get("/todos/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print());
@@ -332,7 +222,7 @@ class TodoApiTest extends IntegrationTest {
                 .andDo(print());
     }
 
-    private ResultActions requestFindGroupTodo(String query, PageRequest page) throws Exception {
+    private ResultActions requestSearchTodo(String query, PageRequest page) throws Exception {
         return  mvc.perform(get("/todos")
                 .param("query", query)
                 .param("size", String.valueOf(page.getPageSize()))
