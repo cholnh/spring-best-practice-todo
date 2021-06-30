@@ -16,7 +16,7 @@ public class TodoBuilder {
         return build(null, title, contents);
     }
 
-    private static Todo build(Long id, String title, String contents) {
+    public static Todo build(Long id, String title, String contents) {
         return Todo.builder()
                 .isActive(true)
                 .createdDate(LocalDateTime.now())
