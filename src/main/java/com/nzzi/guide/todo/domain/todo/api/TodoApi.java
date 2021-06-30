@@ -13,6 +13,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,6 +30,7 @@ public class TodoApi {
     private TodoCommandService todoCommandService;
 
     @GetMapping("/{todoId}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_GUEST')")
     public ResponseEntity<?> findOne(
             @PathVariable(value = "todoId") Long todoId
     ) {
@@ -40,6 +42,7 @@ public class TodoApi {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_GUEST')")
     public ResponseEntity<?> findGroup(
             @RequestParam(value = "query", required = false) String query,
             @PageableDefault(sort = {"idx"}, direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pageable
@@ -53,6 +56,7 @@ public class TodoApi {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public ResponseEntity create(
             @Valid @RequestBody TodoRequest request
     ) {
@@ -65,6 +69,7 @@ public class TodoApi {
     }
 
     @PutMapping("/{todoId}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public ResponseEntity update(
             @PathVariable(value = "todoId") Long todoId,
             @RequestBody TodoRequest request
@@ -73,12 +78,13 @@ public class TodoApi {
         Link link = linkTo(methodOn(TodoApi.class).findOne(updated.getIdx()))
                 .withSelfRel();
         return ResponseEntity
-                .accepted()
+                .ok()
                 .location(link.toUri())
                 .build();
     }
 
     @DeleteMapping("/{todoId}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public ResponseEntity delete(
             @PathVariable(value = "todoId") Long todoId
     ) {
