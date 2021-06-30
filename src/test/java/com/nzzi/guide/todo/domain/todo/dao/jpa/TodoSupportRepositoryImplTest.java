@@ -35,7 +35,7 @@ public class TodoSupportRepositoryImplTest extends RepositoryTest {
     @DisplayName("Todo 정보를 데이터베이스에 정상적으로 저장한다.")
     @Transactional
     @Order(1)
-    public void save_todo_success() {
+    public void save_todo_shouldSucceed() {
 
         // given
         final Long expectedId = savedTodo.getIdx();
@@ -55,10 +55,36 @@ public class TodoSupportRepositoryImplTest extends RepositoryTest {
     }
 
     @Test
-    @DisplayName("contents 필드를 통해 Todo 정보를 검색하여 정상적으로 가져온다.")
+    @DisplayName("title 필드를 통해 Todo 정보를 검색하여 정상적으로 가져온다.")
     @Transactional
     @Order(2)
-    public void search_by_contents_success() {
+    public void searchByTitle_shouldSucceed() {
+
+        // given
+        final Long expectedId = savedTodo.getIdx();
+        final String expectedTitle = savedTodo.getTitle();
+
+        TodoPredicate todoPredicate = TodoPredicate.builder()
+                .title(expectedTitle)
+                .build();
+
+        // when
+        Page<Todo> actualSearchedPage = todoRepository
+                .search(todoPredicate, PageRequestBuilder.build());
+
+        // then
+        assertFalse(actualSearchedPage.isEmpty());
+        assertFalse(actualSearchedPage.filter(
+                todo -> todo.getIdx().equals(expectedId) &&
+                        todo.getTitle().equals(expectedTitle)
+        ).isEmpty());
+    }
+
+    @Test
+    @DisplayName("contents 필드를 통해 Todo 정보를 검색하여 정상적으로 가져온다.")
+    @Transactional
+    @Order(3)
+    public void searchByContents_shouldSucceed() {
 
         // given
         final Long expectedId = savedTodo.getIdx();
@@ -71,8 +97,6 @@ public class TodoSupportRepositoryImplTest extends RepositoryTest {
         // when
         Page<Todo> actualSearchedPage = todoRepository
                 .search(todoPredicate, PageRequestBuilder.build());
-
-        System.out.println(actualSearchedPage.getContent().get(0).getIdx());
 
         // then
         assertFalse(actualSearchedPage.isEmpty());

@@ -1,5 +1,6 @@
 package com.nzzi.guide.todo.domain.todo.service.impl;
 
+import com.nzzi.guide.todo._base.MockTest;
 import com.nzzi.guide.todo.domain.todo.dao.jpa.TodoRepository;
 import com.nzzi.guide.todo.domain.todo.dto.TodoRequest;
 import com.nzzi.guide.todo.domain.todo.dto.TodoResponse;
@@ -9,8 +10,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -19,8 +18,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
-@SpringBootTest
-class TodoCommandServiceImplTest {
+class TodoCommandServiceImplTest extends MockTest {
 
     @Mock
     private TodoRepository mockTodoRepository;
@@ -33,7 +31,7 @@ class TodoCommandServiceImplTest {
 
         @Test
         @DisplayName("Todo 정보를 정상적으로 생성한다.")
-        void create_todo_success() {
+        void create_todo_shouldSucceed() {
 
             // given
             final Long expectedId = 1L;
@@ -64,7 +62,7 @@ class TodoCommandServiceImplTest {
 
         @Test
         @DisplayName("id에 해당하는 Todo 정보를 정상적으로 수정한다.")
-        void update_todo_success() {
+        void update_todo_shouldSucceed() {
 
             // given
             final Long expectedId = 1L;
@@ -98,7 +96,7 @@ class TodoCommandServiceImplTest {
 
         @Test
         @DisplayName("id에 해당하는 Todo 정보를 정상적으로 삭제한다.")
-        void delete_todo_success() {
+        void delete_todo_shouldSucceed() {
 
             // given
             final Long expectedId = 1L;
