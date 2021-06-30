@@ -7,6 +7,9 @@ server:
     context-path: /v1  # 서버 url 뒤에 추가되는 path
     session:
       tracking-modes: cookie  # url jsession 제거 (서버측에선 클라이언트가 쿠키를 사용하는지 알 수 없으므로 url 뒤 jsession 을 붙히게 됨)
+    encoding:
+      force-response: true  # 응답 강제 인코딩
+      force-request: true
 
   # Response Body 압축 (gzip)
   # 주의: 기본 타입 목록(server.compression.mime-types)에 service/json 없음.
