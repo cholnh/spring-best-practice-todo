@@ -20,9 +20,9 @@ public class TodoPredicate {
         final BooleanBuilder builder = new BooleanBuilder();
 
         if (this.title != null)
-            builder.and(qtodo.title.containsIgnoreCase(this.title));
+            builder.or(qtodo.title.containsIgnoreCase(this.title));
         if (this.contents != null)
-            builder.and(qtodo.contents.containsIgnoreCase(this.contents));
+            builder.or(qtodo.contents.containsIgnoreCase(this.contents));
 
         return builder;
     }
@@ -37,9 +37,12 @@ public class TodoPredicate {
 
         Arrays.asList(queryString.split(DELIMITER_QUERY))
                 .forEach((queryKeyValue) -> {
-            String key = queryKeyValue.split(DELIMITER_KEY_VALUE)[0];
-            String value = queryKeyValue.split(DELIMITER_KEY_VALUE)[1];
-            mapping(todoPredicate, key, value);
+            String[] parts = queryKeyValue.split(DELIMITER_KEY_VALUE);
+            if (parts.length == 2) {
+                String key = parts[0].trim();
+                String value = parts[1];
+                mapping(todoPredicate, key, value);
+            }
         });
 
         return todoPredicate;
