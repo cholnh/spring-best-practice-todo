@@ -4,10 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nzzi.guide.todo.TodoApplication;
 import org.junit.jupiter.api.Disabled;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.WebApplicationContext;
 
 // 통합 테스트용 base 클래스 (base 클래스 상속을 통해 테스트 전략 통일)
 // 주로 컨트롤러 테스트를 통해 전체 플로우(요청부터 응답까지)를 테스팅합니다.
@@ -26,6 +29,9 @@ import org.springframework.transaction.annotation.Transactional;
 // 테스트를 통한 데이터베이스 조작을 자동으로 롤백시켜 줍니다.
 @Transactional
 
+// CharacterEncodingFilter 를 추가하여 http 요청, 응답에 인코딩 적용 (UTF-8)
+@Import(HttpEncodingAutoConfiguration.class)
+
 // 실제로 동작할 필요가 없으니 해당 어노테이션 추가
 @Disabled
 public class IntegrationTest {
@@ -37,4 +43,7 @@ public class IntegrationTest {
 
     @Autowired
     protected ObjectMapper objectMapper;
+
+    @Autowired
+    protected WebApplicationContext webApplicationContext;
 }
