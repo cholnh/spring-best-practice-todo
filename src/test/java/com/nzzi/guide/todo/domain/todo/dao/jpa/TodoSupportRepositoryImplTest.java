@@ -32,10 +32,10 @@ public class TodoSupportRepositoryImplTest extends RepositoryTest {
     }
 
     @Test
-    @DisplayName("Todo 정보를 데이터베이스에 정상적으로 저장한다.")
+    @DisplayName("id에 해당하는 Todo 정보를 정상적으로 가져온다.")
     @Transactional
     @Order(1)
-    public void save_todo_shouldSucceed() {
+    public void find_byId_shouldReturned() {
 
         // given
         final Long expectedId = savedTodo.getIdx();
