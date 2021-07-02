@@ -41,7 +41,7 @@ class TodoApiTest extends IntegrationTest {
     @Test
     @WithMockUser(roles="USER")
     @DisplayName("id에 해당하는 Todo 정보를 정상적으로 반환한다.")
-    void findById_shouldSucceed() throws Exception {
+    void find_byId_returnsJsonContainingTodoResponse() throws Exception {
 
         // given
         final Todo savedTodo = todoRepository.save(TodoBuilder.mock());
@@ -63,14 +63,13 @@ class TodoApiTest extends IntegrationTest {
     @Test
     @WithMockUser(roles="USER")
     @DisplayName("모든 Todo 리스트를 페이지화 하여 정상적으로 반환한다.")
-    void findAll_shouldSucceed() throws Exception {
+    void findAll_withPageRequest_returnsJsonContainingPageOfTodoResponse() throws Exception {
 
         // given
         final PageRequest page = PageRequestBuilder.build();
         final int mockEntityCount = 5;
         for (int i = 0; i < mockEntityCount; i++) {
-            Todo todo = todoRepository.save(TodoBuilder.mock());
-            System.out.println(todo.getIdx());
+            todoRepository.save(TodoBuilder.mock());
         }
 
         // when
@@ -87,7 +86,7 @@ class TodoApiTest extends IntegrationTest {
     @Test
     @WithMockUser(roles="USER")
     @DisplayName("query 조건문(단일조건)에 일치하는 Todo 를 찾아 정상적으로 반환한다.")
-    void searchWithSingleQuery_shouldSucceed() throws Exception {
+    void search_withSingleQueryAsParam_returnsJsonContainingPageOfTodoResponse() throws Exception {
 
         // given
         final Todo savedTodo = todoRepository.save(TodoBuilder.mock());
@@ -113,7 +112,7 @@ class TodoApiTest extends IntegrationTest {
     @Test
     @WithMockUser(roles="USER")
     @DisplayName("query 조건문(복수조건)에 일치하는 Todo 를 찾아 정상적으로 반환한다.")
-    void searchWithMultipleQuery_shouldSucceed() throws Exception {
+    void search_withMultipleQueryAsParam_returnsJsonContainingPageOfTodoResponse() throws Exception {
 
         // given
         final Todo expectedTodo1 = todoRepository.save(TodoBuilder.build(
@@ -146,8 +145,8 @@ class TodoApiTest extends IntegrationTest {
 
     @Test
     @WithMockUser(roles="USER")
-    @DisplayName("Todo 정보를 정상적으로 생성한다.")
-    void create_shouldSucceed() throws Exception {
+    @DisplayName("todoRequest 입력을 받아 Todo 정보를 정상적으로 생성한다.")
+    void create_simpleTodoRequest_created() throws Exception {
 
         // given
         final TodoRequest dto = TodoRequestBuilder.mock();
@@ -163,8 +162,8 @@ class TodoApiTest extends IntegrationTest {
 
     @Test
     @WithMockUser(roles="USER")
-    @DisplayName("id에 해당하는 Todo 정보를 정상적으로 수정한다.")
-    void update_shouldSucceed() throws Exception {
+    @DisplayName("todoRequest 입력을 받아 id에 해당하는 Todo 정보를 정상적으로 수정한다.")
+    void update_byIdWithSimpleTodoRequest_updated() throws Exception {
 
         // given
         final Todo savedTodo = todoRepository.save(TodoBuilder.build("title", "contents"));
@@ -188,7 +187,7 @@ class TodoApiTest extends IntegrationTest {
     @Test
     @WithMockUser(roles="USER")
     @DisplayName("id에 해당하는 Todo 정보를 정상적으로 삭제한다.")
-    void delete_shouldSucceed() throws Exception {
+    void delete_byId_deleted() throws Exception {
 
         // given
         final Todo savedTodo = todoRepository.save(TodoBuilder.build("title to be deleted", "contents to be deleted"));
