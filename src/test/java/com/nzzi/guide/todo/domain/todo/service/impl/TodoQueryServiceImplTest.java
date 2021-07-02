@@ -36,7 +36,7 @@ class TodoQueryServiceImplTest extends MockTest {
 
         @Test
         @DisplayName("Todo 정보를 정상적으로 가져온다.")
-        void find_todo_shouldSucceed() {
+        void find_byId_returnsTodoResponse() {
 
             // given (해당 테스트는 mock 사용할 필요 없지만 예시를 위해 사용)
             final Todo savedTodo = TodoBuilder.build(1L, "제목", "내용");
@@ -57,7 +57,7 @@ class TodoQueryServiceImplTest extends MockTest {
 
         @Test
         @DisplayName("등록되지 않은 Todo 조회는 예외를 발생시킨다.")
-        void find_uncreatedTodo_shouldFail() {
+        void find_uncreatedTodo_todoNotFoundExceptionThrown() {
 
             // given
             final Long idForExceptionExpected = -1L;
@@ -74,7 +74,7 @@ class TodoQueryServiceImplTest extends MockTest {
 
         @Test
         @DisplayName("Todo 목록 전체를 page 형태로 가져온다.")
-        void findAll_todoList_shouldSucceed() {
+        void findAll_withPageRequest_returnsPageOfTodoResponse() {
 
             // given
             Pageable pageable = mock(PageRequest.class);
@@ -90,7 +90,7 @@ class TodoQueryServiceImplTest extends MockTest {
 
         @Test
         @DisplayName("각 필드값으로 검색된 Todo 정보를 가져온다.")
-        void search_todo_shouldSucceed() {
+        void search_withTodoPredicate_returnsPageOfTodoResponse() {
 
             // given
             final TodoPredicate predicate = mock(TodoPredicate.class);
