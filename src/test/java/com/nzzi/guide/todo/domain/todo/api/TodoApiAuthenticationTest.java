@@ -38,28 +38,28 @@ class TodoApiAuthenticationTest extends IntegrationTest {
     class findById {
         @Test
         @DisplayName("OAuth 권한이 없으면 id에 해당하는 Todo 정보 반환이 거부된다.")
-        void unauthorized_findOne_shouldFailWith401() throws Exception {
+        void findOne_unauthorizedToken_shouldFailWith401() throws Exception {
             requestFindOneTodo().andExpect(status().isUnauthorized());
         }
 
         @Test
         @WithMockUser(username="test-todo-admin1", roles = "ADMIN")
         @DisplayName("Admin 권한은 id에 해당하는 Todo 정보를 정상적으로 반환한다.")
-        void authorizedAdmin_findOne_shouldSucceedWith200() throws Exception {
+        void findOne_authorizedTokenAsAdmin_shouldSucceedWith200() throws Exception {
             requestFindOneTodo().andExpect(status().isOk());
         }
 
         @Test
         @WithMockUser(username="test-todo-user1", roles = "USER")
         @DisplayName("USER 권한은 id에 해당하는 Todo 정보를 정상적으로 반환한다.")
-        void authorizedUser_findOne_shouldSucceedWith200() throws Exception {
+        void findOne_authorizedTokenAsUser_shouldSucceedWith200() throws Exception {
             requestFindOneTodo().andExpect(status().isOk());
         }
 
         @Test
         @WithMockUser(roles = "GUEST")
         @DisplayName("Guest 권한은 id에 해당하는 Todo 정보를 정상적으로 반환한다.")
-        void authorizedGuest_findOne_shouldSucceedWith200() throws Exception {
+        void findOne_authorizedTokenAsGuest_shouldSucceedWith200() throws Exception {
             requestFindOneTodo().andExpect(status().isOk());
         }
     }
@@ -69,28 +69,28 @@ class TodoApiAuthenticationTest extends IntegrationTest {
     class findAll {
         @Test
         @DisplayName("OAuth 권한이 없으면 모든 Todo 정보 반환이 거부된다.")
-        void unauthorized_findAll_shouldFailWith401() throws Exception {
+        void findAll_unauthorizedToken_shouldFailWith401() throws Exception {
             requestFindAllTodo().andExpect(status().isUnauthorized());
         }
 
         @Test
         @WithMockUser(username="test-todo-admin1", roles = "ADMIN")
         @DisplayName("Admin 권한은 모든 Todo 리스트를 페이지화 하여 정상적으로 반환한다.")
-        void authorizedAdmin_findAll_shouldSucceedWith200() throws Exception {
+        void findAll_authorizedTokenAsAdmin_shouldSucceedWith200() throws Exception {
             requestFindAllTodo().andExpect(status().isOk());
         }
 
         @Test
         @WithMockUser(username="test-todo-user1", roles = "USER")
         @DisplayName("USER 권한은 모든 Todo 리스트를 페이지화 하여 정상적으로 반환한다.")
-        void authorizedUser_findAll_shouldSucceedWith200() throws Exception {
+        void findAll_authorizedTokenAsUser_shouldSucceedWith200() throws Exception {
             requestFindAllTodo().andExpect(status().isOk());
         }
 
         @Test
         @WithMockUser(roles = "GUEST")
         @DisplayName("Guest 권한은 모든 Todo 리스트를 페이지화 하여 정상적으로 반환한다.")
-        void authorizedGuest_findAll_shouldSucceedWith200() throws Exception {
+        void findAll_authorizedTokenAsGuest_shouldSucceedWith200() throws Exception {
             requestFindAllTodo().andExpect(status().isOk());
         }
     }
@@ -100,28 +100,28 @@ class TodoApiAuthenticationTest extends IntegrationTest {
     class search {
         @Test
         @DisplayName("OAuth 권한이 없으면 Todo 검색이 거부된다.")
-        void unauthorized_search_shouldFailWith401() throws Exception {
+        void search_unauthorizedToken_shouldFailWith401() throws Exception {
             requestSearchTodo().andExpect(status().isUnauthorized());
         }
 
         @Test
         @WithMockUser(username="test-todo-admin1", roles = "ADMIN")
         @DisplayName("Admin 권한은 Todo 검색 결과를 정상적으로 반환한다.")
-        void authorizedAdmin_search_shouldSucceedWith200() throws Exception {
+        void search_authorizedTokenAsAdmin_shouldSucceedWith200() throws Exception {
             requestSearchTodo().andExpect(status().isOk());
         }
 
         @Test
         @WithMockUser(username="test-todo-user1", roles = "USER")
         @DisplayName("USER 권한은 Todo 검색 결과를 정상적으로 반환한다.")
-        void authorizedUser_search_shouldSucceedWith200() throws Exception {
+        void search_authorizedTokenAsUser_shouldSucceedWith200() throws Exception {
             requestSearchTodo().andExpect(status().isOk());
         }
 
         @Test
         @WithMockUser(roles = "GUEST")
         @DisplayName("Guest 권한은 Todo 검색 결과를 정상적으로 반환한다.")
-        void authorizedGuest_search_shouldSucceedWith200() throws Exception {
+        void search_authorizedTokenAsGuest_shouldSucceedWith200() throws Exception {
             requestSearchTodo().andExpect(status().isOk());
         }
     }
@@ -131,28 +131,28 @@ class TodoApiAuthenticationTest extends IntegrationTest {
     class create {
         @Test
         @DisplayName("OAuth 권한이 없으면 Todo 정보 생성이 거부된다.")
-        void unauthorized_create_shouldFailWith401() throws Exception {
+        void create_unauthorizedToken_shouldFailWith401() throws Exception {
             requestCreateTodo().andExpect(status().isUnauthorized());
         }
 
         @Test
         @WithMockUser(username="test-todo-admin1", roles = "ADMIN")
         @DisplayName("Admin 권한은 Todo 정보를 정상적으로 생성한다.")
-        void authorizedAdmin_create_shouldSucceedWith201() throws Exception {
+        void create_authorizedTokenAsAdmin_shouldSucceedWith201() throws Exception {
             requestCreateTodo().andExpect(status().isCreated());
         }
 
         @Test
         @WithMockUser(username="test-todo-user1", roles = "USER")
         @DisplayName("USER 권한은 Todo 정보를 정상적으로 생성한다.")
-        void authorizedUser_create_shouldSucceedWith201() throws Exception {
+        void create_authorizedTokenAsUser_shouldSucceedWith201() throws Exception {
             requestCreateTodo().andExpect(status().isCreated());
         }
 
         @Test
         @WithMockUser(roles = "GUEST")
         @DisplayName("Guest 권한은 Todo 정보 생성이 거부된다.")
-        void authorizedGuest_create_shouldFailWith403() throws Exception {
+        void create_authorizedTokenAsGuest_shouldFailWith403() throws Exception {
             requestCreateTodo().andExpect(status().isForbidden());
         }
     }
@@ -162,28 +162,28 @@ class TodoApiAuthenticationTest extends IntegrationTest {
     class update {
         @Test
         @DisplayName("OAuth 권한이 없으면 Todo 정보 수정이 거부된다.")
-        void unauthorized_update_shouldFailWith401() throws Exception {
+        void update_unauthorizedToken_shouldFailWith401() throws Exception {
             requestUpdateTodo().andExpect(status().isUnauthorized());
         }
 
         @Test
         @WithMockUser(username="test-todo-admin1", roles = "ADMIN")
         @DisplayName("Admin 권한은 Todo 정보를 정상적으로 수정한다.")
-        void authorizedAdmin_update_shouldSucceedWith200() throws Exception {
+        void update_authorizedTokenAsAdmin_shouldSucceedWith200() throws Exception {
             requestUpdateTodo().andExpect(status().isOk());
         }
 
         @Test
         @WithMockUser(username="test-todo-user1", roles = "USER")
         @DisplayName("USER 권한은 Todo 정보를 정상적으로 수정한다.")
-        void authorizedUser_update_shouldSucceedWith200() throws Exception {
+        void update_authorizedTokenAsUser_shouldSucceedWith200() throws Exception {
             requestUpdateTodo().andExpect(status().isOk());
         }
 
         @Test
         @WithMockUser(roles = "GUEST")
         @DisplayName("Guest 권한은 Todo 정보 수정이 거부된다.")
-        void authorizedGuest_update_shouldFailWith403() throws Exception {
+        void update_authorizedTokenAsGuest_shouldFailWith403() throws Exception {
             requestUpdateTodo().andExpect(status().isForbidden());
         }
     }
@@ -193,28 +193,28 @@ class TodoApiAuthenticationTest extends IntegrationTest {
     class delete {
         @Test
         @DisplayName("OAuth 권한이 없으면 Todo 정보 삭제가 거부된다.")
-        void unauthorized_delete_shouldFailWith401() throws Exception {
+        void delete_unauthorizedToken_shouldFailWith401() throws Exception {
             requestDeleteTodo().andExpect(status().isUnauthorized());
         }
 
         @Test
         @WithMockUser(username="test-todo-admin1", roles = "ADMIN")
         @DisplayName("Admin 권한은 Todo 정보를 정상적으로 삭제한다.")
-        void authorizedAdmin_delete_shouldSucceedWith204() throws Exception {
+        void delete_authorizedTokenAsAdmin_delete_shouldSucceedWith204() throws Exception {
             requestDeleteTodo().andExpect(status().isNoContent());
         }
 
         @Test
         @WithMockUser(username="test-todo-user1", roles = "USER")
         @DisplayName("USER 권한은 Todo 정보를 정상적으로 삭제한다.")
-        void authorizedUser_delete_shouldSucceedWith204() throws Exception {
+        void delete_authorizedTokenAsUser_delete_shouldSucceedWith204() throws Exception {
             requestDeleteTodo().andExpect(status().isNoContent());
         }
 
         @Test
         @WithMockUser(roles = "GUEST")
         @DisplayName("Guest 권한은 Todo 정보 삭제가 거부된다.")
-        void authorizedGuest_delete_shouldFailWith403() throws Exception {
+        void delete_authorizedTokenAsGuest_delete_shouldFailWith403() throws Exception {
             requestDeleteTodo().andExpect(status().isForbidden());
         }
     }
