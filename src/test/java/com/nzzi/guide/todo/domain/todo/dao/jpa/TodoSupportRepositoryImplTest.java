@@ -35,7 +35,7 @@ public class TodoSupportRepositoryImplTest extends RepositoryTest {
     @DisplayName("id에 해당하는 Todo 정보를 정상적으로 가져온다.")
     @Transactional
     @Order(1)
-    public void find_byId_shouldReturned() {
+    public void find_byId_returnsTodo() {
 
         // given
         final Long expectedId = savedTodo.getIdx();
@@ -58,7 +58,7 @@ public class TodoSupportRepositoryImplTest extends RepositoryTest {
     @DisplayName("title 필드를 통해 Todo 정보를 검색하여 정상적으로 가져온다.")
     @Transactional
     @Order(2)
-    public void searchByTitle_shouldSucceed() {
+    public void search_byTitle_returnsPageOfTodo() {
 
         // given
         final Long expectedId = savedTodo.getIdx();
@@ -84,7 +84,7 @@ public class TodoSupportRepositoryImplTest extends RepositoryTest {
     @DisplayName("contents 필드를 통해 Todo 정보를 검색하여 정상적으로 가져온다.")
     @Transactional
     @Order(3)
-    public void searchByContents_shouldSucceed() {
+    public void search_byContents_returnsPageOfTodo() {
 
         // given
         final Long expectedId = savedTodo.getIdx();
