@@ -31,7 +31,7 @@ class TodoCommandServiceImplTest extends MockTest {
 
         @Test
         @DisplayName("Todo 정보를 정상적으로 생성한다.")
-        void create_todo_shouldSucceed() {
+        void create_simpleTodoRequest_createdAndReturnsTodoResponse() {
 
             // given
             final Long expectedId = 1L;
@@ -62,7 +62,7 @@ class TodoCommandServiceImplTest extends MockTest {
 
         @Test
         @DisplayName("id에 해당하는 Todo 정보를 정상적으로 수정한다.")
-        void update_todo_shouldSucceed() {
+        void update_byIdWithSimpleTodoRequest_updatedAndReturnsTodoResponse() {
 
             // given
             final Long expectedId = 1L;
@@ -96,7 +96,7 @@ class TodoCommandServiceImplTest extends MockTest {
 
         @Test
         @DisplayName("id에 해당하는 Todo 정보를 정상적으로 삭제한다.")
-        void delete_todo_shouldSucceed() {
+        void delete_byId_deleted() {
 
             // given
             final Long expectedId = 1L;
