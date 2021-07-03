@@ -37,7 +37,7 @@ import org.springframework.web.context.WebApplicationContext;
 public class IntegrationTest {
 
     // 통합 테스트 시 필요한 기능들을 protected 로 제공합니다. (유틸성 클래스들을 제공하면 편리합니다)
-    // MockMVC 클라이언트 테스트 사용을 위한
+
     @Autowired
     protected MockMvc mvc;
 
