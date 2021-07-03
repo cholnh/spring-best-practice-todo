@@ -220,7 +220,8 @@ class TodoApiAuthenticationTest extends IntegrationTest {
     }
 
     private ResultActions requestFindOneTodo() throws Exception {
-        return  mvc.perform(get("/todos/{id}", 1L)
+        final Long dummyId = 1L;
+        return  mvc.perform(get("/todos/{id}", dummyId)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print());
     }
@@ -254,15 +255,17 @@ class TodoApiAuthenticationTest extends IntegrationTest {
     }
 
     private ResultActions requestUpdateTodo() throws Exception {
+        final Long dummyId = 1L;
         final TodoRequest dummyDto = TodoRequestBuilder.mock();
-        return mvc.perform(put("/todos/{id}", 1L)
+        return mvc.perform(put("/todos/{id}", dummyId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(dummyDto)))
                 .andDo(print());
     }
 
     private ResultActions requestDeleteTodo() throws Exception {
-        return mvc.perform(delete("/todos/{id}", 1L))
+        final Long dummyId = 1L;
+        return mvc.perform(delete("/todos/{id}", dummyId))
                 .andDo(print());
     }
 }
