@@ -126,7 +126,8 @@ class TodoApiTest extends ControllerTest {
 ```
 
 위 테스트 코드에서 볼 수 있듯이 `given` 메서드를 사용하여 목 객체의 가짜 로직을 부여하였습니다.
-```
+
+```java
 given(todoQueryService.findTodo(id))
                 .willReturn(response);
 ``` 
@@ -135,7 +136,7 @@ given(todoQueryService.findTodo(id))
 
 목 객체를 등록할 때 아래와 같은 방법도 쓰게됩니다.  
 
-```
+```java
 @Mock
 private TodoRepository mockTodoRepository;
 
