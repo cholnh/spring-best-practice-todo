@@ -18,7 +18,7 @@
 - [Service 스타일 가이드](https://github.com/cholnh/spring-best-practice-todo/blob/master/contents/guide-service.md#service-스타일-가이드)
 - [DAO 스타일 가이드](https://github.com/cholnh/spring-best-practice-todo/blob/master/contents/guide-dao.md#dao-스타일-가이드)
 - [Test 스타일 가이드](https://github.com/cholnh/spring-best-practice-todo/blob/master/contents/guide-test.md#test-스타일-가이드)
-- Exception 스타일 가이드
+- [Exception 스타일 가이드](https://github.com/cholnh/spring-best-practice-todo/blob/master/contents/guide-exception.md#exception-스타일-가이드)
 
 <br/><br/>
 
