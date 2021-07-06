@@ -1,5 +1,8 @@
 package com.nzzi.guide.todo.global.error.exception;
 
+import lombok.Getter;
+
+@Getter
 public class BusinessException extends RuntimeException {
 
     private ErrorCode errorCode;
@@ -14,7 +17,4 @@ public class BusinessException extends RuntimeException {
         this.errorCode = errorCode;
     }
 
-    public ErrorCode getErrorCode() {
-        return errorCode;
-    }
 }

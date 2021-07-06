@@ -1,8 +1,12 @@
 package com.nzzi.guide.todo.global.error.exception;
 
-//import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-//@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@Getter
+@AllArgsConstructor
 public enum ErrorCode {
 
     // Common
@@ -13,35 +17,11 @@ public enum ErrorCode {
     INVALID_TYPE_VALUE(400, "C005", " Invalid Type Value"),
     HANDLE_ACCESS_DENIED(403, "C006", "Access is Denied"),
 
+    // User
+    EMAIL_DUPLICATION(400, "U001", "Email is Duplication"),
+    LOGIN_INPUT_INVALID(400, "U002", "Login input is invalid");
 
-    // Member
-    EMAIL_DUPLICATION(400, "M001", "Email is Duplication"),
-    LOGIN_INPUT_INVALID(400, "M002", "Login input is invalid"),
-
-    // Coupon
-    COUPON_ALREADY_USE(400, "CO001", "Coupon was already used"),
-    COUPON_EXPIRE(400, "CO002", "Coupon was already expired")
-
-    ;
+    private int status;
     private final String code;
     private final String message;
-    private int status;
-
-    ErrorCode(final int status, final String code, final String message) {
-        this.status = status;
-        this.message = message;
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return this.message;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public int getStatus() {
-        return status;
-    }
 }
